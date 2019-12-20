@@ -8,6 +8,6 @@ import pub.doric.DoricRegistry;
 public class MediaLibrary extends DoricLibrary {
     @Override
     public void load(DoricRegistry registry) {
-        registry.registerViewNode(VideoTextureViewNode.class);
+        registry.registerViewNode(VideoViewNode.class);
     }
 }

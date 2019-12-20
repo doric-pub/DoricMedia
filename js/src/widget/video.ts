@@ -15,13 +15,47 @@
  */
 import { IView, Property, View, layoutConfig } from "doric"
 
+export class MediaPlayerOptions {
+    mediaPlayerMode: number = 2
+
+    recordMode: number = 0
+
+    videoDecodeMode: number = 1
+
+    externalRenderMode: number = 0
+
+    backupDir?: string
+
+    isLoadMediaStreamer: boolean = false
+
+    isAccurateSeek: boolean = true
+
+    isUseNewPrivateMediaPlayerCore: boolean = false
+
+    http_proxy?: string
+
+    enableAsyncDNSResolver: boolean = false
+
+    isVideoOpaque: boolean = true
+
+    pauseInBackground: boolean = false
+}
+
 export interface IVideo extends IView {
+    mediaPlayerOptions?: MediaPlayerOptions
     path?: string
 }
 
 export class Video extends View implements IVideo {
     @Property
+    mediaPlayerOptions?: MediaPlayerOptions
+
+    @Property
     path?: string
+
+    prepareAsyncToPlay() {
+        return this.nativeChannel(context, 'prepareAsyncToPlay')() as Promise<boolean>
+    }
 }
 
 export function video(config: IVideo) {
