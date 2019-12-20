@@ -1,35 +1,21 @@
-import { Panel, Group, vlayout, layoutConfig, Gravity, IVLayout, text, Text, Color, navbar } from "doric";
+import { Panel, Group, vlayout, layoutConfig, Gravity, IVLayout, Color, navbar } from "doric"
+import { video } from "./widget/video"
 
 @Entry
-class doriclib_media extends Panel {
+class Media extends Panel {
     onShow() {
         navbar(context).setTitle("doriclib-media")
     }
     build(rootView: Group): void {
-        let number: Text
-        let count = 0
         vlayout([
-            number = text({
-                textSize: 40,
-                text: '0',
-            }),
-            text({
-                text: "Click to count",
-                textSize: 20,
-                backgroundColor: Color.parse('#70a1ff'),
-                textColor: Color.WHITE,
-                onClick: () => {
-                    number.text = `${++count}`
-                },
-                layoutConfig: layoutConfig().exactly(),
-                width: 200,
-                height: 50,
-            }),
+            video({
+                path: ""
+            })
         ])
             .apply({
                 layoutConfig: layoutConfig().exactly().a(Gravity.Center),
-                width: 200,
-                height: 200,
+                width: 400,
+                height: 400,
                 space: 20,
                 border: {
                     color: Color.BLUE,
