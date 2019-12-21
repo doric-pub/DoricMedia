@@ -149,6 +149,12 @@ export class Video extends View implements IVideo {
             filterDir: filterDir
         })
     }
+
+    setVolume(volume: number) {
+        this.nativeChannel(context, 'setVolume')({
+            volume: volume
+        })
+    }
 }
 
 export function video(config: IVideo) {

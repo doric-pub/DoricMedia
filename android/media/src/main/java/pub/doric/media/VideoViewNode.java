@@ -224,4 +224,9 @@ public class VideoViewNode extends ViewNode<VideoTextureView> {
                 value.asObject().getProperty("filterDir").asString().value()
         );
     }
+
+    @DoricMethod
+    public void setVolume(JSValue value) {
+        this.mView.setVolume(value.asObject().getProperty("volume").asNumber().toFloat());
+    }
 }

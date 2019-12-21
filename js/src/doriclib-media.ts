@@ -20,11 +20,12 @@ import {
 @Entry
 class Media extends Panel {
 
+    mediaPlayerOptions = new MediaPlayerOptions()
     startPosMs: number = 10000
     msec: number = 5000
     blackDisplay: boolean = false
     shotPath: string = "test"
-    mediaPlayerOptions = new MediaPlayerOptions()
+    volume: number = 0
 
     onShow() {
         navbar(context).setTitle("doriclib-media")
@@ -110,7 +111,7 @@ class Media extends Panel {
             logNode,
             flowlayout({
                 layoutConfig: layoutConfig().wrap(),
-                itemCount: 18,
+                itemCount: 20,
                 columnCount: 2,
                 columnSpace: 10,
                 rowSpace: 10,
@@ -332,7 +333,32 @@ class Media extends Panel {
                             }),)
                         } else if (index == 17) {
                             it.addChild(durationNode,)
-                        } 
+                        } else if (index == 18) {
+                            it.addChild(text({
+                                text: "setVolume",
+                                width: 180,
+                                height: 50,
+                                textSize: 20,
+                                backgroundColor: Color.RED,
+                                textColor: Color.WHITE,
+                                onClick: () => {
+                                    videoNode.setVolume(this.volume)
+                                },
+                                layoutConfig: layoutConfig().exactly(),
+                            }),)
+                        } else if (index == 19) {
+                            it.addChild((new Input).also(it => {
+                                it.layoutConfig = layoutConfig().exactly()
+                                it.width = 180
+                                it.height = 50
+                                it.text = this.volume.toString()
+                                it.multiline = false
+                                it.textAlignment = Gravity.Left
+                                it.onTextChange = (text: string) => {
+                                    this.volume = parseFloat(text)
+                                }
+                            }),)
+                        }
                     })
                 },
             })
