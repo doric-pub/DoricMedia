@@ -127,6 +127,10 @@ export class Video extends View implements IVideo {
         })
     }
 
+    initialize() {
+        this.nativeChannel(context, 'initialize')()
+    }
+
     release() {
         this.nativeChannel(context, 'release')()
     }

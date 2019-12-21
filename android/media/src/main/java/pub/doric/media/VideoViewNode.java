@@ -154,6 +154,11 @@ public class VideoViewNode extends ViewNode<VideoTextureView> {
     }
 
     @DoricMethod
+    public void initialize() {
+        this.mView.initialize(mediaPlayerOptions);
+    }
+
+    @DoricMethod
     public void setDataSource(JSValue value) {
         System.out.println();
         this.mView.setDataSource(

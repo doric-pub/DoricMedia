@@ -24,6 +24,7 @@ class Media extends Panel {
     msec: number = 5000
     blackDisplay: boolean = false
     shotPath: string = "test"
+    mediaPlayerOptions = new MediaPlayerOptions()
 
     onShow() {
         navbar(context).setTitle("doriclib-media")
@@ -39,7 +40,7 @@ class Media extends Panel {
             it.textAlignment = Gravity.Left
         })
         let videoNode = video({
-            mediaPlayerOptions: new MediaPlayerOptions(),
+            mediaPlayerOptions: this.mediaPlayerOptions,
             onPrepared: () => {
                 logNode.text += "onPrepared\n"
             },
@@ -87,7 +88,7 @@ class Media extends Panel {
             logNode,
             flowlayout({
                 layoutConfig: layoutConfig().wrap(),
-                itemCount: 13,
+                itemCount: 14,
                 columnCount: 2,
                 columnSpace: 10,
                 rowSpace: 10,
@@ -257,6 +258,19 @@ class Media extends Panel {
                                 textColor: Color.WHITE,
                                 onClick: () => {
                                     videoNode.release()
+                                },
+                                layoutConfig: layoutConfig().exactly(),
+                            }),)
+                        } else if (index == 13) {
+                            it.addChild(text({
+                                text: "initialize",
+                                width: 180,
+                                height: 50,
+                                textSize: 20,
+                                backgroundColor: Color.RED,
+                                textColor: Color.WHITE,
+                                onClick: () => {
+                                    videoNode.initialize()
                                 },
                                 layoutConfig: layoutConfig().exactly(),
                             }),)
