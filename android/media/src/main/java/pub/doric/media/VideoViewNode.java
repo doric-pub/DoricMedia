@@ -216,4 +216,12 @@ public class VideoViewNode extends ViewNode<VideoTextureView> {
     public int getDuration() {
         return this.mView.getDuration();
     }
+
+    @DoricMethod
+    public void setFilter(JSValue value) {
+        this.mView.setFilter(
+                value.asObject().getProperty("type").asNumber().toInt(),
+                value.asObject().getProperty("filterDir").asString().value()
+        );
+    }
 }

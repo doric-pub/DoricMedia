@@ -142,6 +142,13 @@ export class Video extends View implements IVideo {
     getDuration() {
         return this.nativeChannel(context, 'getDuration')() as Promise<number>
     }
+
+    setFilter(type: number, filterDir: string) {
+        this.nativeChannel(context, 'setFilter')({
+            type: type,
+            filterDir: filterDir
+        })
+    }
 }
 
 export function video(config: IVideo) {
