@@ -20,6 +20,7 @@ import {
 @Entry
 class Media extends Panel {
 
+    url: string = "http://vfx.mtime.cn/Video/2019/02/04/mp4/190204084208765161.mp4"
     mediaPlayerOptions = new MediaPlayerOptions()
     startPosMs: number = 10000
     msec: number = 5000
@@ -81,7 +82,7 @@ class Media extends Panel {
             it.layoutConfig = layoutConfig().exactly()
             it.width = 400
             it.height = 50
-            it.text = "http://vfx.mtime.cn/Video/2019/02/04/mp4/190204084208765161.mp4"
+            it.text = this.url
             it.multiline = false
             it.textAlignment = Gravity.Left
             it.onTextChange = (text: string) => {
@@ -116,7 +117,7 @@ class Media extends Panel {
             logNode,
             flowlayout({
                 layoutConfig: layoutConfig().wrap(),
-                itemCount: 30,
+                itemCount: 31,
                 columnCount: 2,
                 columnSpace: 10,
                 rowSpace: 10,
@@ -465,7 +466,7 @@ class Media extends Panel {
                             }),)
                         } else if (index == 28) {
                             it.addChild(text({
-                                text: "stop",
+                                text: "setLooping",
                                 width: 180,
                                 height: 50,
                                 textSize: 20,
@@ -487,6 +488,19 @@ class Media extends Panel {
                                 it.onTextChange = (text: string) => {
                                     this.isLooping = Boolean(text)
                                 }
+                            }),)
+                        } else if (index == 30) {
+                            it.addChild(text({
+                                text: "preLoadDataSource",
+                                width: 180,
+                                height: 50,
+                                textSize: 20,
+                                backgroundColor: Color.RED,
+                                textColor: Color.WHITE,
+                                onClick: () => {
+                                    videoNode.preLoadDataSource(this.url)
+                                },
+                                layoutConfig: layoutConfig().exactly(),
                             }),)
                         }
                     })

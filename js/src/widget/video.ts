@@ -185,6 +185,12 @@ export class Video extends View implements IVideo {
             isLooping: isLooping
         })
     }
+
+    preLoadDataSource(url: string) {
+        this.nativeChannel(context, 'preLoadDataSource')({
+            url: url
+        })
+    }
 }
 
 export function video(config: IVideo) {

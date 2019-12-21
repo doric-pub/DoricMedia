@@ -254,4 +254,9 @@ public class VideoViewNode extends ViewNode<VideoTextureView> {
     public void setLooping(JSValue value) {
         this.mView.setLooping(value.asObject().getProperty("isLooping").asBoolean().value());
     }
+
+    @DoricMethod
+    public void preLoadDataSource(JSValue value) {
+        this.mView.preLoadDataSource(value.asObject().getProperty("url").asString().value());
+    }
 }
