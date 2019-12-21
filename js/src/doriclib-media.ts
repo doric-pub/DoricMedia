@@ -20,6 +20,7 @@ import {
 @Entry
 class Media extends Panel {
 
+    startPosMs: number = 10000
     msec: number = 5000
 
     onShow() {
@@ -85,7 +86,7 @@ class Media extends Panel {
             flowlayout({
                 layoutConfig: layoutConfig().wrap(),
                 itemCount: 8,
-                columnCount: 3,
+                columnCount: 2,
                 columnSpace: 10,
                 rowSpace: 10,
                 renderItem: (index) => {
@@ -95,7 +96,7 @@ class Media extends Panel {
                         if (index == 0) {
                             it.addChild(text({
                                 text: "setDataSource",
-                                width: 120,
+                                width: 180,
                                 height: 50,
                                 textSize: 17,
                                 backgroundColor: Color.RED,
@@ -108,7 +109,7 @@ class Media extends Panel {
                         } else if (index == 1) {
                             it.addChild(text({
                                 text: "prepareAsync",
-                                width: 120,
+                                width: 180,
                                 height: 50,
                                 textSize: 17,
                                 backgroundColor: Color.RED,
@@ -121,20 +122,32 @@ class Media extends Panel {
                         } else if (index == 2) {
                             it.addChild(text({
                                 text: "prepareAsyncWithStartPos",
-                                width: 120,
+                                width: 180,
                                 height: 50,
-                                textSize: 9,
+                                textSize: 15,
                                 backgroundColor: Color.RED,
                                 textColor: Color.WHITE,
                                 onClick: () => {
-                                    videoNode.prepareAsyncWithStartPos(0)
+                                    videoNode.prepareAsyncWithStartPos(this.startPosMs)
                                 },
                                 layoutConfig: layoutConfig().exactly(),
                             }),)
                         } else if (index == 3) {
+                            it.addChild((new Input).also(it => {
+                                it.layoutConfig = layoutConfig().exactly()
+                                it.width = 180
+                                it.height = 50
+                                it.text = this.startPosMs.toString()
+                                it.multiline = false
+                                it.textAlignment = Gravity.Left
+                                it.onTextChange = (text: string) => {
+                                    this.startPosMs = parseInt(text)
+                                }
+                            }),)
+                        } else if (index == 4) {
                             it.addChild(text({
                                 text: "start",
-                                width: 120,
+                                width: 180,
                                 height: 50,
                                 textSize: 20,
                                 backgroundColor: Color.RED,
@@ -144,10 +157,10 @@ class Media extends Panel {
                                 },
                                 layoutConfig: layoutConfig().exactly(),
                             }),)
-                        } else if (index == 4) {
+                        } else if (index == 5) {
                             it.addChild(text({
                                 text: "pause",
-                                width: 120,
+                                width: 180,
                                 height: 50,
                                 textSize: 20,
                                 backgroundColor: Color.RED,
@@ -157,17 +170,10 @@ class Media extends Panel {
                                 },
                                 layoutConfig: layoutConfig().exactly(),
                             }),)
-                        } else if (index == 5) {
-                            it.addChild(text({
-                                text: "",
-                                width: 120,
-                                height: 50,
-                                layoutConfig: layoutConfig().exactly(),
-                            }),)
                         } else if (index == 6) {
                             it.addChild(text({
                                 text: "seekTo",
-                                width: 120,
+                                width: 180,
                                 height: 50,
                                 textSize: 20,
                                 backgroundColor: Color.RED,
@@ -180,7 +186,7 @@ class Media extends Panel {
                         } else if (index == 7) {
                             it.addChild((new Input).also(it => {
                                 it.layoutConfig = layoutConfig().exactly()
-                                it.width = 120
+                                it.width = 180
                                 it.height = 50
                                 it.text = this.msec.toString()
                                 it.multiline = false
