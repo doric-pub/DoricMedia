@@ -43,15 +43,18 @@ export class MediaPlayerOptions {
 
 export interface IVideo extends IView {
     mediaPlayerOptions?: MediaPlayerOptions
-    path?: string
 }
 
 export class Video extends View implements IVideo {
     @Property
     mediaPlayerOptions?: MediaPlayerOptions
 
-    @Property
-    path?: string
+    setDataSource(path: string, type: number) {
+        return this.nativeChannel(context, 'setDataSource')({
+            path: path,
+            type: type,
+        }) as Promise<boolean>
+    }
 
     prepareAsyncToPlay() {
         return this.nativeChannel(context, 'prepareAsyncToPlay')() as Promise<boolean>

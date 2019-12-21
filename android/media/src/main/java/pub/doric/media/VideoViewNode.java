@@ -15,8 +15,6 @@ import pub.doric.shader.ViewNode;
 public class VideoViewNode extends ViewNode<VideoTextureView> {
 
     private MediaPlayer.MediaPlayerOptions mediaPlayerOptions;
-    private String path;
-    private String prepareAsyncToPlay;
 
     public VideoViewNode(DoricContext doricContext) {
         super(doricContext);
@@ -76,10 +74,6 @@ public class VideoViewNode extends ViewNode<VideoTextureView> {
                 view.initialize(mediaPlayerOptions);
             }
             break;
-            case "path": {
-                path = prop.asString().toString();
-            }
-            break;
             default:
                 super.blend(view, name, prop);
                 break;
@@ -87,8 +81,16 @@ public class VideoViewNode extends ViewNode<VideoTextureView> {
     }
 
     @DoricMethod
+    public boolean setDataSource(JSValue value) {
+        this.mView.setDataSource(
+                value.asObject().getProperty("path").asString().value(),
+                value.asObject().getProperty("type").asNumber().toInt()
+        );
+        return true;
+    }
+
+    @DoricMethod
     public boolean prepareAsyncToPlay() {
-        this.mView.setDataSource(path, MediaPlayer.VOD_HIGH_CACHE);
         this.mView.prepareAsyncToPlay();
         return true;
     }
