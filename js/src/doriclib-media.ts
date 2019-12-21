@@ -27,8 +27,9 @@ class Media extends Panel {
     shotPath: string = "test"
     volume: number = 0
     playrate: number = 0
-    mode: number = 0
+    videoScalingMode: number = 0
     scaleRate: number = 0.5
+    videoRotationMode: number = 0
 
     onShow() {
         navbar(context).setTitle("doriclib-media")
@@ -114,7 +115,7 @@ class Media extends Panel {
             logNode,
             flowlayout({
                 layoutConfig: layoutConfig().wrap(),
-                itemCount: 26,
+                itemCount: 28,
                 columnCount: 2,
                 columnSpace: 10,
                 rowSpace: 10,
@@ -395,7 +396,7 @@ class Media extends Panel {
                                 backgroundColor: Color.RED,
                                 textColor: Color.WHITE,
                                 onClick: () => {
-                                    videoNode.setVideoScalingMode(this.mode)
+                                    videoNode.setVideoScalingMode(this.videoScalingMode)
                                 },
                                 layoutConfig: layoutConfig().exactly(),
                             }),)
@@ -404,11 +405,11 @@ class Media extends Panel {
                                 it.layoutConfig = layoutConfig().exactly()
                                 it.width = 180
                                 it.height = 50
-                                it.text = this.mode.toString()
+                                it.text = this.videoScalingMode.toString()
                                 it.multiline = false
                                 it.textAlignment = Gravity.Left
                                 it.onTextChange = (text: string) => {
-                                    this.mode = parseInt(text)
+                                    this.videoScalingMode = parseInt(text)
                                 }
                             }),)
                         } else if (index == 24) {
@@ -434,6 +435,31 @@ class Media extends Panel {
                                 it.textAlignment = Gravity.Left
                                 it.onTextChange = (text: string) => {
                                     this.scaleRate = parseFloat(text)
+                                }
+                            }),)
+                        } else if (index == 26) {
+                            it.addChild(text({
+                                text: "setVideoRotationMode",
+                                width: 180,
+                                height: 50,
+                                textSize: 18,
+                                backgroundColor: Color.RED,
+                                textColor: Color.WHITE,
+                                onClick: () => {
+                                    videoNode.setVideoRotationMode(this.videoRotationMode)
+                                },
+                                layoutConfig: layoutConfig().exactly(),
+                            }),)
+                        } else if (index == 27) {
+                            it.addChild((new Input).also(it => {
+                                it.layoutConfig = layoutConfig().exactly()
+                                it.width = 180
+                                it.height = 50
+                                it.text = this.videoRotationMode.toString()
+                                it.multiline = false
+                                it.textAlignment = Gravity.Left
+                                it.onTextChange = (text: string) => {
+                                    this.videoRotationMode = parseInt(text)
                                 }
                             }),)
                         }

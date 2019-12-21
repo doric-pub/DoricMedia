@@ -173,6 +173,12 @@ export class Video extends View implements IVideo {
             scaleRate: scaleRate
         })
     }
+
+    setVideoRotationMode(mode: number) {
+        this.nativeChannel(context, 'setVideoRotationMode')({
+            mode: mode
+        })
+    }
 }
 
 export function video(config: IVideo) {
