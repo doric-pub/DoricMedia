@@ -93,13 +93,24 @@ class Media extends Panel {
                 this.shotPath = text
             }
         })
+        let durationNode = (new Input).also(it => {
+            it.layoutConfig = layoutConfig().exactly()
+            it.width = 180
+            it.height = 50
+            it.text = ""
+            it.multiline = false
+            it.textAlignment = Gravity.Left
+            it.onTextChange = (text: string) => {
+                this.shotPath = text
+            }
+        })
         vlayout([
             videoNode,
             pathNode,
             logNode,
             flowlayout({
                 layoutConfig: layoutConfig().wrap(),
-                itemCount: 16,
+                itemCount: 18,
                 columnCount: 2,
                 columnSpace: 10,
                 rowSpace: 10,
@@ -303,6 +314,24 @@ class Media extends Panel {
                             }),)
                         } else if (index == 15) {
                             it.addChild(currentPositionNode,)
+                        } else if (index == 16) {
+                            it.addChild(text({
+                                text: "getDuration",
+                                width: 180,
+                                height: 50,
+                                textSize: 20,
+                                backgroundColor: Color.RED,
+                                textColor: Color.WHITE,
+                                onClick: () => {
+                                    videoNode.getDuration()
+                                        .then((duration) => {
+                                            durationNode.text = duration.toString()
+                                        })
+                                },
+                                layoutConfig: layoutConfig().exactly(),
+                            }),)
+                        } else if (index == 17) {
+                            it.addChild(durationNode,)
                         } 
                     })
                 },

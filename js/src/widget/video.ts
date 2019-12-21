@@ -138,6 +138,10 @@ export class Video extends View implements IVideo {
     getCurrentPosition() {
         return this.nativeChannel(context, 'getCurrentPosition')() as Promise<number>
     }
+
+    getDuration() {
+        return this.nativeChannel(context, 'getDuration')() as Promise<number>
+    }
 }
 
 export function video(config: IVideo) {
