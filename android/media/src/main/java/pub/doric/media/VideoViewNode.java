@@ -249,4 +249,9 @@ public class VideoViewNode extends ViewNode<VideoTextureView> {
     public void setVideoRotationMode(JSValue value) {
         this.mView.setVideoRotationMode(value.asObject().getProperty("mode").asNumber().toInt());
     }
+
+    @DoricMethod
+    public void setLooping(JSValue value) {
+        this.mView.setLooping(value.asObject().getProperty("isLooping").asBoolean().value());
+    }
 }

@@ -30,6 +30,7 @@ class Media extends Panel {
     videoScalingMode: number = 0
     scaleRate: number = 0.5
     videoRotationMode: number = 0
+    isLooping: boolean = false
 
     onShow() {
         navbar(context).setTitle("doriclib-media")
@@ -115,7 +116,7 @@ class Media extends Panel {
             logNode,
             flowlayout({
                 layoutConfig: layoutConfig().wrap(),
-                itemCount: 28,
+                itemCount: 30,
                 columnCount: 2,
                 columnSpace: 10,
                 rowSpace: 10,
@@ -460,6 +461,31 @@ class Media extends Panel {
                                 it.textAlignment = Gravity.Left
                                 it.onTextChange = (text: string) => {
                                     this.videoRotationMode = parseInt(text)
+                                }
+                            }),)
+                        } else if (index == 28) {
+                            it.addChild(text({
+                                text: "stop",
+                                width: 180,
+                                height: 50,
+                                textSize: 20,
+                                backgroundColor: Color.RED,
+                                textColor: Color.WHITE,
+                                onClick: () => {
+                                    videoNode.setLooping(this.isLooping)
+                                },
+                                layoutConfig: layoutConfig().exactly(),
+                            }),)
+                        } else if (index == 29) {
+                            it.addChild((new Input).also(it => {
+                                it.layoutConfig = layoutConfig().exactly()
+                                it.width = 180
+                                it.height = 50
+                                it.text = this.isLooping.toString()
+                                it.multiline = false
+                                it.textAlignment = Gravity.Left
+                                it.onTextChange = (text: string) => {
+                                    this.isLooping = Boolean(text)
                                 }
                             }),)
                         }

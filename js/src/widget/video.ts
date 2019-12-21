@@ -179,6 +179,12 @@ export class Video extends View implements IVideo {
             mode: mode
         })
     }
+
+    setLooping(isLooping: boolean) {
+        this.nativeChannel(context, 'setLooping')({
+            isLooping: isLooping
+        })
+    }
 }
 
 export function video(config: IVideo) {
