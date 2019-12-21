@@ -196,4 +196,9 @@ public class VideoViewNode extends ViewNode<VideoTextureView> {
     public void grabDisplayShot(JSValue value) {
         this.mView.grabDisplayShot(value.asObject().getProperty("shotPath").asString().value());
     }
+
+    @DoricMethod
+    public void release() {
+        this.mView.release();
+    }
 }

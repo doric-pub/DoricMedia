@@ -126,6 +126,10 @@ export class Video extends View implements IVideo {
             shotPath: shotPath
         })
     }
+
+    release() {
+        this.nativeChannel(context, 'release')()
+    }
 }
 
 export function video(config: IVideo) {

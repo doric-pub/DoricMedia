@@ -87,7 +87,7 @@ class Media extends Panel {
             logNode,
             flowlayout({
                 layoutConfig: layoutConfig().wrap(),
-                itemCount: 12,
+                itemCount: 13,
                 columnCount: 2,
                 columnSpace: 10,
                 rowSpace: 10,
@@ -246,6 +246,19 @@ class Media extends Panel {
                                 it.onTextChange = (text: string) => {
                                     this.shotPath = text
                                 }
+                            }),)
+                        } else if (index == 12) {
+                            it.addChild(text({
+                                text: "release",
+                                width: 180,
+                                height: 50,
+                                textSize: 20,
+                                backgroundColor: Color.RED,
+                                textColor: Color.WHITE,
+                                onClick: () => {
+                                    videoNode.release()
+                                },
+                                layoutConfig: layoutConfig().exactly(),
                             }),)
                         }
                     })
