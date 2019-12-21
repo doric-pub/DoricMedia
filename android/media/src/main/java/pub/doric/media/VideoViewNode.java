@@ -239,4 +239,9 @@ public class VideoViewNode extends ViewNode<VideoTextureView> {
     public void setVideoScalingMode(JSValue value) {
         this.mView.setVideoScalingMode(value.asObject().getProperty("mode").asNumber().toInt());
     }
+
+    @DoricMethod
+    public void setVideoScaleRate(JSValue value) {
+        this.mView.setVideoScaleRate(value.asObject().getProperty("scaleRate").asNumber().toFloat());
+    }
 }

@@ -28,6 +28,7 @@ class Media extends Panel {
     volume: number = 0
     playrate: number = 0
     mode: number = 0
+    scaleRate: number = 0.5
 
     onShow() {
         navbar(context).setTitle("doriclib-media")
@@ -113,7 +114,7 @@ class Media extends Panel {
             logNode,
             flowlayout({
                 layoutConfig: layoutConfig().wrap(),
-                itemCount: 24,
+                itemCount: 26,
                 columnCount: 2,
                 columnSpace: 10,
                 rowSpace: 10,
@@ -390,7 +391,7 @@ class Media extends Panel {
                                 text: "setVideoScalingMode",
                                 width: 180,
                                 height: 50,
-                                textSize: 20,
+                                textSize: 18,
                                 backgroundColor: Color.RED,
                                 textColor: Color.WHITE,
                                 onClick: () => {
@@ -408,6 +409,31 @@ class Media extends Panel {
                                 it.textAlignment = Gravity.Left
                                 it.onTextChange = (text: string) => {
                                     this.mode = parseInt(text)
+                                }
+                            }),)
+                        } else if (index == 24) {
+                            it.addChild(text({
+                                text: "setVideoScaleRate",
+                                width: 180,
+                                height: 50,
+                                textSize: 20,
+                                backgroundColor: Color.RED,
+                                textColor: Color.WHITE,
+                                onClick: () => {
+                                    videoNode.setVideoScaleRate(this.scaleRate)
+                                },
+                                layoutConfig: layoutConfig().exactly(),
+                            }),)
+                        } else if (index == 25) {
+                            it.addChild((new Input).also(it => {
+                                it.layoutConfig = layoutConfig().exactly()
+                                it.width = 180
+                                it.height = 50
+                                it.text = this.scaleRate.toString()
+                                it.multiline = false
+                                it.textAlignment = Gravity.Left
+                                it.onTextChange = (text: string) => {
+                                    this.scaleRate = parseFloat(text)
                                 }
                             }),)
                         }

@@ -167,6 +167,12 @@ export class Video extends View implements IVideo {
             mode: mode
         })
     }
+
+    setVideoScaleRate(scaleRate: number) {
+        this.nativeChannel(context, 'setVideoScaleRate')({
+            scaleRate: scaleRate
+        })
+    }
 }
 
 export function video(config: IVideo) {
