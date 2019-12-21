@@ -91,8 +91,28 @@ export class Video extends View implements IVideo {
         })
     }
 
-    prepareAsyncToPlay() {
-        this.nativeChannel(context, 'prepareAsyncToPlay')()
+    prepareAsync() {
+        this.nativeChannel(context, 'prepareAsync')()
+    }
+
+    prepareAsyncWithStartPos(startPosMs: number) {
+        this.nativeChannel(context, 'prepareAsyncWithStartPos')({
+            startPosMs: startPosMs
+        })
+    }
+
+    start() {
+        this.nativeChannel(context, 'start')()
+    }
+
+    pause() {
+        this.nativeChannel(context, 'pause')()
+    }
+
+    seekTo(msec: number) {
+        this.nativeChannel(context, 'seekTo')({
+            msec: msec
+        })
     }
 }
 

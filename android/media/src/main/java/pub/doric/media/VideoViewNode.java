@@ -163,7 +163,27 @@ public class VideoViewNode extends ViewNode<VideoTextureView> {
     }
 
     @DoricMethod
-    public void prepareAsyncToPlay() {
-        this.mView.prepareAsyncToPlay();
+    public void prepareAsync() {
+        this.mView.prepareAsync();
+    }
+
+    @DoricMethod
+    public void prepareAsyncWithStartPos(JSValue value) {
+        this.mView.prepareAsyncWithStartPos(value.asObject().getProperty("startPosMs").asNumber().toInt());
+    }
+
+    @DoricMethod
+    public void start() {
+        this.mView.start();
+    }
+
+    @DoricMethod
+    public void pause() {
+        this.mView.pause();
+    }
+
+    @DoricMethod
+    public void seekTo(JSValue value) {
+        this.mView.seekTo(value.asObject().getProperty("msec").asNumber().toInt());
     }
 }

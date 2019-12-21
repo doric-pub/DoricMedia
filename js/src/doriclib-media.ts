@@ -1,5 +1,6 @@
 import {
     Color,
+    FlowLayoutItem,
     Gravity,
     Group,
     Input,
@@ -8,9 +9,8 @@ import {
     layoutConfig,
     navbar,
     text,
-    vlayout,
-    hlayout,
-    IHLayout
+    flowlayout,
+    vlayout
 } from "doric"
 import {
     MediaPlayerOptions,
@@ -20,6 +20,8 @@ import {
 @Entry
 class Media extends Panel {
 
+    msec: number = 5000
+
     onShow() {
         navbar(context).setTitle("doriclib-media")
     }
@@ -28,7 +30,7 @@ class Media extends Panel {
         let logNode = (new Input).also(it => {
             it.layoutConfig = layoutConfig().exactly()
             it.width = 400
-            it.height = 333
+            it.height = 160
             it.text = ""
             it.multiline = true
             it.textAlignment = Gravity.Left
@@ -80,24 +82,121 @@ class Media extends Panel {
             videoNode,
             pathNode,
             logNode,
-            text({
-                text: "prepareAsyncToPlay",
-                textSize: 20,
-                backgroundColor: Color.RED,
-                textColor: Color.WHITE,
-                onClick: () => {
-                    videoNode.setDataSource(pathNode.text!, 3)
-                    videoNode.prepareAsyncToPlay()
+            flowlayout({
+                layoutConfig: layoutConfig().wrap(),
+                itemCount: 8,
+                columnCount: 3,
+                columnSpace: 10,
+                rowSpace: 10,
+                renderItem: (index) => {
+                    return new FlowLayoutItem().apply({
+                        layoutConfig: layoutConfig().wrap(),
+                    }).also(it => {
+                        if (index == 0) {
+                            it.addChild(text({
+                                text: "setDataSource",
+                                width: 120,
+                                height: 50,
+                                textSize: 17,
+                                backgroundColor: Color.RED,
+                                textColor: Color.WHITE,
+                                onClick: () => {
+                                    videoNode.setDataSource(pathNode.text!, 3)
+                                },
+                                layoutConfig: layoutConfig().exactly(),
+                            }),)
+                        } else if (index == 1) {
+                            it.addChild(text({
+                                text: "prepareAsync",
+                                width: 120,
+                                height: 50,
+                                textSize: 17,
+                                backgroundColor: Color.RED,
+                                textColor: Color.WHITE,
+                                onClick: () => {
+                                    videoNode.prepareAsync()
+                                },
+                                layoutConfig: layoutConfig().exactly(),
+                            }),)
+                        } else if (index == 2) {
+                            it.addChild(text({
+                                text: "prepareAsyncWithStartPos",
+                                width: 120,
+                                height: 50,
+                                textSize: 9,
+                                backgroundColor: Color.RED,
+                                textColor: Color.WHITE,
+                                onClick: () => {
+                                    videoNode.prepareAsyncWithStartPos(0)
+                                },
+                                layoutConfig: layoutConfig().exactly(),
+                            }),)
+                        } else if (index == 3) {
+                            it.addChild(text({
+                                text: "start",
+                                width: 120,
+                                height: 50,
+                                textSize: 20,
+                                backgroundColor: Color.RED,
+                                textColor: Color.WHITE,
+                                onClick: () => {
+                                    videoNode.start()
+                                },
+                                layoutConfig: layoutConfig().exactly(),
+                            }),)
+                        } else if (index == 4) {
+                            it.addChild(text({
+                                text: "pause",
+                                width: 120,
+                                height: 50,
+                                textSize: 20,
+                                backgroundColor: Color.RED,
+                                textColor: Color.WHITE,
+                                onClick: () => {
+                                    videoNode.pause()
+                                },
+                                layoutConfig: layoutConfig().exactly(),
+                            }),)
+                        } else if (index == 5) {
+                            it.addChild(text({
+                                text: "",
+                                width: 120,
+                                height: 50,
+                                layoutConfig: layoutConfig().exactly(),
+                            }),)
+                        } else if (index == 6) {
+                            it.addChild(text({
+                                text: "seekTo",
+                                width: 120,
+                                height: 50,
+                                textSize: 20,
+                                backgroundColor: Color.RED,
+                                textColor: Color.WHITE,
+                                onClick: () => {
+                                    videoNode.seekTo(this.msec)
+                                },
+                                layoutConfig: layoutConfig().exactly(),
+                            }),)
+                        } else if (index == 7) {
+                            it.addChild((new Input).also(it => {
+                                it.layoutConfig = layoutConfig().exactly()
+                                it.width = 120
+                                it.height = 50
+                                it.text = this.msec.toString()
+                                it.multiline = false
+                                it.textAlignment = Gravity.Left
+                                it.onTextChange = (text: string) => {
+                                    this.msec = parseInt(text)
+                                }
+                            }),)
+                        }
+                    })
                 },
-                layoutConfig: layoutConfig().exactly(),
-                width: 200,
-                height: 50,
-            }),
+            })
         ])
             .apply({
-                layoutConfig: layoutConfig().exactly().a(Gravity.Center),
+                layoutConfig: layoutConfig().wrap().a(Gravity.Center),
                 width: 400,
-                height: 600,
                 gravity: Gravity.Center,
             } as IVLayout)
             .in(rootView)
