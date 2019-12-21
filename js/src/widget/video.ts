@@ -155,6 +155,12 @@ export class Video extends View implements IVideo {
             volume: volume
         })
     }
+
+    setPlayRate(playrate: number) {
+        this.nativeChannel(context, 'setPlayRate')({
+            playrate: playrate
+        })
+    }
 }
 
 export function video(config: IVideo) {

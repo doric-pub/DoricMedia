@@ -26,6 +26,7 @@ class Media extends Panel {
     blackDisplay: boolean = false
     shotPath: string = "test"
     volume: number = 0
+    playrate: number = 0
 
     onShow() {
         navbar(context).setTitle("doriclib-media")
@@ -111,7 +112,7 @@ class Media extends Panel {
             logNode,
             flowlayout({
                 layoutConfig: layoutConfig().wrap(),
-                itemCount: 20,
+                itemCount: 22,
                 columnCount: 2,
                 columnSpace: 10,
                 rowSpace: 10,
@@ -356,6 +357,31 @@ class Media extends Panel {
                                 it.textAlignment = Gravity.Left
                                 it.onTextChange = (text: string) => {
                                     this.volume = parseFloat(text)
+                                }
+                            }),)
+                        } else if (index == 20) {
+                            it.addChild(text({
+                                text: "setPlayRate",
+                                width: 180,
+                                height: 50,
+                                textSize: 20,
+                                backgroundColor: Color.RED,
+                                textColor: Color.WHITE,
+                                onClick: () => {
+                                    videoNode.setPlayRate(this.playrate)
+                                },
+                                layoutConfig: layoutConfig().exactly(),
+                            }),)
+                        } else if (index == 21) {
+                            it.addChild((new Input).also(it => {
+                                it.layoutConfig = layoutConfig().exactly()
+                                it.width = 180
+                                it.height = 50
+                                it.text = this.playrate.toString()
+                                it.multiline = false
+                                it.textAlignment = Gravity.Left
+                                it.onTextChange = (text: string) => {
+                                    this.playrate = parseFloat(text)
                                 }
                             }),)
                         }
