@@ -82,13 +82,24 @@ class Media extends Panel {
                 it.text = text
             }
         })
+        let currentPositionNode = (new Input).also(it => {
+            it.layoutConfig = layoutConfig().exactly()
+            it.width = 180
+            it.height = 50
+            it.text = ""
+            it.multiline = false
+            it.textAlignment = Gravity.Left
+            it.onTextChange = (text: string) => {
+                this.shotPath = text
+            }
+        })
         vlayout([
             videoNode,
             pathNode,
             logNode,
             flowlayout({
                 layoutConfig: layoutConfig().wrap(),
-                itemCount: 14,
+                itemCount: 16,
                 columnCount: 2,
                 columnSpace: 10,
                 rowSpace: 10,
@@ -274,7 +285,25 @@ class Media extends Panel {
                                 },
                                 layoutConfig: layoutConfig().exactly(),
                             }),)
-                        }
+                        } else if (index == 14) {
+                            it.addChild(text({
+                                text: "getCurrentPosition",
+                                width: 180,
+                                height: 50,
+                                textSize: 20,
+                                backgroundColor: Color.RED,
+                                textColor: Color.WHITE,
+                                onClick: () => {
+                                    videoNode.getCurrentPosition()
+                                        .then((currentPosition) => {
+                                            currentPositionNode.text = currentPosition.toString()
+                                        })
+                                },
+                                layoutConfig: layoutConfig().exactly(),
+                            }),)
+                        } else if (index == 15) {
+                            it.addChild(currentPositionNode,)
+                        } 
                     })
                 },
             })

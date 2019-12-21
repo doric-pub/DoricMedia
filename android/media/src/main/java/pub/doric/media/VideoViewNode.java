@@ -206,4 +206,9 @@ public class VideoViewNode extends ViewNode<VideoTextureView> {
     public void release() {
         this.mView.release();
     }
+
+    @DoricMethod
+    public int getCurrentPosition() {
+        return this.mView.getCurrentPosition();
+    }
 }
