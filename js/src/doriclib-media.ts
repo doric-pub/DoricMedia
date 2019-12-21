@@ -23,6 +23,7 @@ class Media extends Panel {
     startPosMs: number = 10000
     msec: number = 5000
     blackDisplay: boolean = false
+    shotPath: string = "test"
 
     onShow() {
         navbar(context).setTitle("doriclib-media")
@@ -86,7 +87,7 @@ class Media extends Panel {
             logNode,
             flowlayout({
                 layoutConfig: layoutConfig().wrap(),
-                itemCount: 10,
+                itemCount: 12,
                 columnCount: 2,
                 columnSpace: 10,
                 rowSpace: 10,
@@ -219,6 +220,31 @@ class Media extends Panel {
                                 it.textAlignment = Gravity.Left
                                 it.onTextChange = (text: string) => {
                                     this.blackDisplay = Boolean(text)
+                                }
+                            }),)
+                        } else if (index == 10) {
+                            it.addChild(text({
+                                text: "grabDisplayShot",
+                                width: 180,
+                                height: 50,
+                                textSize: 20,
+                                backgroundColor: Color.RED,
+                                textColor: Color.WHITE,
+                                onClick: () => {
+                                    videoNode.grabDisplayShot(this.shotPath)
+                                },
+                                layoutConfig: layoutConfig().exactly(),
+                            }),)
+                        } else if (index == 11) {
+                            it.addChild((new Input).also(it => {
+                                it.layoutConfig = layoutConfig().exactly()
+                                it.width = 180
+                                it.height = 50
+                                it.text = this.shotPath
+                                it.multiline = false
+                                it.textAlignment = Gravity.Left
+                                it.onTextChange = (text: string) => {
+                                    this.shotPath = text
                                 }
                             }),)
                         }

@@ -120,6 +120,12 @@ export class Video extends View implements IVideo {
             blackDisplay: blackDisplay
         })
     }
+
+    grabDisplayShot(shotPath: string) {
+        this.nativeChannel(context, 'grabDisplayShot')({
+            shotPath: shotPath
+        })
+    }
 }
 
 export function video(config: IVideo) {

@@ -191,4 +191,9 @@ public class VideoViewNode extends ViewNode<VideoTextureView> {
     public void seekTo(JSValue value) {
         this.mView.seekTo(value.asObject().getProperty("msec").asNumber().toInt());
     }
+
+    @DoricMethod
+    public void grabDisplayShot(JSValue value) {
+        this.mView.grabDisplayShot(value.asObject().getProperty("shotPath").asString().value());
+    }
 }
