@@ -183,6 +183,11 @@ public class VideoViewNode extends ViewNode<VideoTextureView> {
     }
 
     @DoricMethod
+    public void stop(JSValue value) {
+        this.mView.stop(value.asObject().getProperty("blackDisplay").asBoolean().value());
+    }
+
+    @DoricMethod
     public void seekTo(JSValue value) {
         this.mView.seekTo(value.asObject().getProperty("msec").asNumber().toInt());
     }

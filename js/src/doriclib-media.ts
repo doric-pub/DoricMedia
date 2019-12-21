@@ -22,6 +22,7 @@ class Media extends Panel {
 
     startPosMs: number = 10000
     msec: number = 5000
+    blackDisplay: boolean = false
 
     onShow() {
         navbar(context).setTitle("doriclib-media")
@@ -85,7 +86,7 @@ class Media extends Panel {
             logNode,
             flowlayout({
                 layoutConfig: layoutConfig().wrap(),
-                itemCount: 8,
+                itemCount: 10,
                 columnCount: 2,
                 columnSpace: 10,
                 rowSpace: 10,
@@ -193,6 +194,31 @@ class Media extends Panel {
                                 it.textAlignment = Gravity.Left
                                 it.onTextChange = (text: string) => {
                                     this.msec = parseInt(text)
+                                }
+                            }),)
+                        } else if (index == 8) {
+                            it.addChild(text({
+                                text: "stop",
+                                width: 180,
+                                height: 50,
+                                textSize: 20,
+                                backgroundColor: Color.RED,
+                                textColor: Color.WHITE,
+                                onClick: () => {
+                                    videoNode.stop(this.blackDisplay)
+                                },
+                                layoutConfig: layoutConfig().exactly(),
+                            }),)
+                        } else if (index == 9) {
+                            it.addChild((new Input).also(it => {
+                                it.layoutConfig = layoutConfig().exactly()
+                                it.width = 180
+                                it.height = 50
+                                it.text = this.blackDisplay.toString()
+                                it.multiline = false
+                                it.textAlignment = Gravity.Left
+                                it.onTextChange = (text: string) => {
+                                    this.blackDisplay = Boolean(text)
                                 }
                             }),)
                         }

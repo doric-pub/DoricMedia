@@ -109,15 +109,15 @@ export class Video extends View implements IVideo {
         this.nativeChannel(context, 'pause')()
     }
 
-    stop(blackDisplay: boolean) {
-        this.nativeChannel(context, 'blackDisplay')({
-            blackDisplay: blackDisplay
-        })
-    }
-
     seekTo(msec: number) {
         this.nativeChannel(context, 'seekTo')({
             msec: msec
+        })
+    }
+
+    stop(blackDisplay: boolean) {
+        this.nativeChannel(context, 'stop')({
+            blackDisplay: blackDisplay
         })
     }
 }
