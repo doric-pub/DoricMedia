@@ -81,17 +81,16 @@ public class VideoViewNode extends ViewNode<VideoTextureView> {
     }
 
     @DoricMethod
-    public boolean setDataSource(JSValue value) {
+    public void setDataSource(JSValue value) {
+        System.out.println();
         this.mView.setDataSource(
                 value.asObject().getProperty("path").asString().value(),
                 value.asObject().getProperty("type").asNumber().toInt()
         );
-        return true;
     }
 
     @DoricMethod
-    public boolean prepareAsyncToPlay() {
+    public void prepareAsyncToPlay() {
         this.mView.prepareAsyncToPlay();
-        return true;
     }
 }
