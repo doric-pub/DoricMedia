@@ -43,11 +43,46 @@ export class MediaPlayerOptions {
 
 export interface IVideo extends IView {
     mediaPlayerOptions?: MediaPlayerOptions
+
+    onPrepared?: Function
+
+    onError?: Function
+
+    onInfo?: Function
+
+    onCompletion?: Function
+
+    onVideoSizeChanged?: Function
+
+    onBufferingUpdate?: Function
+
+    OnSeekComplete?: Function
 }
 
 export class Video extends View implements IVideo {
     @Property
     mediaPlayerOptions?: MediaPlayerOptions
+
+    @Property
+    onPrepared?: Function
+
+    @Property
+    onError?: Function
+
+    @Property
+    onInfo?: Function
+
+    @Property
+    onCompletion?: Function
+
+    @Property
+    onVideoSizeChanged?: Function
+
+    @Property
+    onBufferingUpdate?: Function
+
+    @Property
+    OnSeekComplete?: Function
 
     setDataSource(path: string, type: number) {
         this.nativeChannel(context, 'setDataSource')({

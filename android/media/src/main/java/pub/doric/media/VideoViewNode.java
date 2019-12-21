@@ -3,6 +3,7 @@ package pub.doric.media;
 
 import android.slkmedia.mediaplayer.MediaPlayer;
 import android.slkmedia.mediaplayer.VideoTextureView;
+import android.slkmedia.mediaplayer.VideoViewListener;
 
 import com.github.pengfeizhou.jscore.JSValue;
 
@@ -15,6 +16,49 @@ import pub.doric.shader.ViewNode;
 public class VideoViewNode extends ViewNode<VideoTextureView> {
 
     private MediaPlayer.MediaPlayerOptions mediaPlayerOptions;
+    private VideoViewListener videoViewListener = new VideoViewListener() {
+        @Override
+        public void onPrepared() {
+            callJSResponse(onPrepared);
+        }
+
+        @Override
+        public void onError(int what, int extra) {
+            callJSResponse(onError, what, extra);
+        }
+
+        @Override
+        public void onInfo(int what, int extra) {
+            callJSResponse(onInfo, what, extra);
+        }
+
+        @Override
+        public void onCompletion() {
+            callJSResponse(onCompletion);
+        }
+
+        @Override
+        public void onVideoSizeChanged(int width, int height) {
+            callJSResponse(onVideoSizeChanged, width, height);
+        }
+
+        @Override
+        public void onBufferingUpdate(int percent) {
+            callJSResponse(onBufferingUpdate, percent);
+        }
+
+        @Override
+        public void OnSeekComplete() {
+            callJSResponse(OnSeekComplete);
+        }
+    };
+    private String onPrepared;
+    private String onError;
+    private String onInfo;
+    private String onCompletion;
+    private String onVideoSizeChanged;
+    private String onBufferingUpdate;
+    private String OnSeekComplete;
 
     public VideoViewNode(DoricContext doricContext) {
         super(doricContext);
@@ -72,6 +116,35 @@ public class VideoViewNode extends ViewNode<VideoTextureView> {
                 mediaPlayerOptions.pauseInBackground = pauseInBackground.asBoolean().value();
 
                 view.initialize(mediaPlayerOptions);
+                view.setListener(videoViewListener);
+            }
+            break;
+            case "onPrepared": {
+                this.onPrepared = prop.asString().value();
+            }
+            break;
+            case "onError": {
+                this.onError = prop.asString().value();
+            }
+            break;
+            case "onInfo": {
+                this.onInfo = prop.asString().value();
+            }
+            break;
+            case "onCompletion": {
+                this.onCompletion = prop.asString().value();
+            }
+            break;
+            case "onVideoSizeChanged": {
+                this.onVideoSizeChanged = prop.asString().value();
+            }
+            break;
+            case "onBufferingUpdate": {
+                this.onBufferingUpdate = prop.asString().value();
+            }
+            break;
+            case "OnSeekComplete": {
+                this.OnSeekComplete = prop.asString().value();
             }
             break;
             default:
