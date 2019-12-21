@@ -27,6 +27,7 @@ class Media extends Panel {
     shotPath: string = "test"
     volume: number = 0
     playrate: number = 0
+    mode: number = 0
 
     onShow() {
         navbar(context).setTitle("doriclib-media")
@@ -112,7 +113,7 @@ class Media extends Panel {
             logNode,
             flowlayout({
                 layoutConfig: layoutConfig().wrap(),
-                itemCount: 22,
+                itemCount: 24,
                 columnCount: 2,
                 columnSpace: 10,
                 rowSpace: 10,
@@ -382,6 +383,31 @@ class Media extends Panel {
                                 it.textAlignment = Gravity.Left
                                 it.onTextChange = (text: string) => {
                                     this.playrate = parseFloat(text)
+                                }
+                            }),)
+                        } else if (index == 22) {
+                            it.addChild(text({
+                                text: "setVideoScalingMode",
+                                width: 180,
+                                height: 50,
+                                textSize: 20,
+                                backgroundColor: Color.RED,
+                                textColor: Color.WHITE,
+                                onClick: () => {
+                                    videoNode.setVideoScalingMode(this.mode)
+                                },
+                                layoutConfig: layoutConfig().exactly(),
+                            }),)
+                        } else if (index == 23) {
+                            it.addChild((new Input).also(it => {
+                                it.layoutConfig = layoutConfig().exactly()
+                                it.width = 180
+                                it.height = 50
+                                it.text = this.mode.toString()
+                                it.multiline = false
+                                it.textAlignment = Gravity.Left
+                                it.onTextChange = (text: string) => {
+                                    this.mode = parseInt(text)
                                 }
                             }),)
                         }
