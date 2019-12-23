@@ -39,7 +39,7 @@ class Media extends Panel {
 
     build(rootView: Group): void {
         let logNode = (new Input).also(it => {
-            it.layoutConfig = layoutConfig().exactly()
+            it.layoutConfig = layoutConfig().just()
             it.width = 400
             it.height = 160
             it.text = ""
@@ -70,7 +70,7 @@ class Media extends Panel {
                 logNode.text += "OnSeekComplete\n"
             },
         }).apply({
-            layoutConfig: layoutConfig().exactly(),
+            layoutConfig: layoutConfig().just(),
             width: 400,
             height: 167,
             border: {
@@ -79,7 +79,7 @@ class Media extends Panel {
             },
         })
         let pathNode = (new Input).also(it => {
-            it.layoutConfig = layoutConfig().exactly()
+            it.layoutConfig = layoutConfig().just()
             it.width = 400
             it.height = 50
             it.text = this.url
@@ -90,7 +90,7 @@ class Media extends Panel {
             }
         })
         let currentPositionNode = (new Input).also(it => {
-            it.layoutConfig = layoutConfig().exactly()
+            it.layoutConfig = layoutConfig().just()
             it.width = 180
             it.height = 50
             it.text = ""
@@ -101,7 +101,7 @@ class Media extends Panel {
             }
         })
         let durationNode = (new Input).also(it => {
-            it.layoutConfig = layoutConfig().exactly()
+            it.layoutConfig = layoutConfig().just()
             it.width = 180
             it.height = 50
             it.text = ""
@@ -116,14 +116,14 @@ class Media extends Panel {
             pathNode,
             logNode,
             flowlayout({
-                layoutConfig: layoutConfig().wrap(),
+                layoutConfig: layoutConfig().fit(),
                 itemCount: 31,
                 columnCount: 2,
                 columnSpace: 10,
                 rowSpace: 10,
                 renderItem: (index) => {
                     return new FlowLayoutItem().apply({
-                        layoutConfig: layoutConfig().wrap(),
+                        layoutConfig: layoutConfig().fit(),
                     }).also(it => {
                         if (index == 0) {
                             it.addChild(text({
@@ -136,7 +136,7 @@ class Media extends Panel {
                                 onClick: () => {
                                     videoNode.setDataSource(pathNode.text!, 3)
                                 },
-                                layoutConfig: layoutConfig().exactly(),
+                                layoutConfig: layoutConfig().just(),
                             }),)
                         } else if (index == 1) {
                             it.addChild(text({
@@ -149,7 +149,7 @@ class Media extends Panel {
                                 onClick: () => {
                                     videoNode.prepareAsync()
                                 },
-                                layoutConfig: layoutConfig().exactly(),
+                                layoutConfig: layoutConfig().just(),
                             }),)
                         } else if (index == 2) {
                             it.addChild(text({
@@ -162,11 +162,11 @@ class Media extends Panel {
                                 onClick: () => {
                                     videoNode.prepareAsyncWithStartPos(this.startPosMs)
                                 },
-                                layoutConfig: layoutConfig().exactly(),
+                                layoutConfig: layoutConfig().just(),
                             }),)
                         } else if (index == 3) {
                             it.addChild((new Input).also(it => {
-                                it.layoutConfig = layoutConfig().exactly()
+                                it.layoutConfig = layoutConfig().just()
                                 it.width = 180
                                 it.height = 50
                                 it.text = this.startPosMs.toString()
@@ -187,7 +187,7 @@ class Media extends Panel {
                                 onClick: () => {
                                     videoNode.start()
                                 },
-                                layoutConfig: layoutConfig().exactly(),
+                                layoutConfig: layoutConfig().just(),
                             }),)
                         } else if (index == 5) {
                             it.addChild(text({
@@ -200,7 +200,7 @@ class Media extends Panel {
                                 onClick: () => {
                                     videoNode.pause()
                                 },
-                                layoutConfig: layoutConfig().exactly(),
+                                layoutConfig: layoutConfig().just(),
                             }),)
                         } else if (index == 6) {
                             it.addChild(text({
@@ -213,11 +213,11 @@ class Media extends Panel {
                                 onClick: () => {
                                     videoNode.seekTo(this.msec)
                                 },
-                                layoutConfig: layoutConfig().exactly(),
+                                layoutConfig: layoutConfig().just(),
                             }),)
                         } else if (index == 7) {
                             it.addChild((new Input).also(it => {
-                                it.layoutConfig = layoutConfig().exactly()
+                                it.layoutConfig = layoutConfig().just()
                                 it.width = 180
                                 it.height = 50
                                 it.text = this.msec.toString()
@@ -238,11 +238,11 @@ class Media extends Panel {
                                 onClick: () => {
                                     videoNode.stop(this.blackDisplay)
                                 },
-                                layoutConfig: layoutConfig().exactly(),
+                                layoutConfig: layoutConfig().just(),
                             }),)
                         } else if (index == 9) {
                             it.addChild((new Input).also(it => {
-                                it.layoutConfig = layoutConfig().exactly()
+                                it.layoutConfig = layoutConfig().just()
                                 it.width = 180
                                 it.height = 50
                                 it.text = this.blackDisplay.toString()
@@ -263,11 +263,11 @@ class Media extends Panel {
                                 onClick: () => {
                                     videoNode.grabDisplayShot(this.shotPath)
                                 },
-                                layoutConfig: layoutConfig().exactly(),
+                                layoutConfig: layoutConfig().just(),
                             }),)
                         } else if (index == 11) {
                             it.addChild((new Input).also(it => {
-                                it.layoutConfig = layoutConfig().exactly()
+                                it.layoutConfig = layoutConfig().just()
                                 it.width = 180
                                 it.height = 50
                                 it.text = this.shotPath
@@ -288,7 +288,7 @@ class Media extends Panel {
                                 onClick: () => {
                                     videoNode.release()
                                 },
-                                layoutConfig: layoutConfig().exactly(),
+                                layoutConfig: layoutConfig().just(),
                             }),)
                         } else if (index == 13) {
                             it.addChild(text({
@@ -301,7 +301,7 @@ class Media extends Panel {
                                 onClick: () => {
                                     videoNode.initialize()
                                 },
-                                layoutConfig: layoutConfig().exactly(),
+                                layoutConfig: layoutConfig().just(),
                             }),)
                         } else if (index == 14) {
                             it.addChild(text({
@@ -317,7 +317,7 @@ class Media extends Panel {
                                             currentPositionNode.text = currentPosition.toString()
                                         })
                                 },
-                                layoutConfig: layoutConfig().exactly(),
+                                layoutConfig: layoutConfig().just(),
                             }),)
                         } else if (index == 15) {
                             it.addChild(currentPositionNode,)
@@ -335,7 +335,7 @@ class Media extends Panel {
                                             durationNode.text = duration.toString()
                                         })
                                 },
-                                layoutConfig: layoutConfig().exactly(),
+                                layoutConfig: layoutConfig().just(),
                             }),)
                         } else if (index == 17) {
                             it.addChild(durationNode,)
@@ -350,11 +350,11 @@ class Media extends Panel {
                                 onClick: () => {
                                     videoNode.setVolume(this.volume)
                                 },
-                                layoutConfig: layoutConfig().exactly(),
+                                layoutConfig: layoutConfig().just(),
                             }),)
                         } else if (index == 19) {
                             it.addChild((new Input).also(it => {
-                                it.layoutConfig = layoutConfig().exactly()
+                                it.layoutConfig = layoutConfig().just()
                                 it.width = 180
                                 it.height = 50
                                 it.text = this.volume.toString()
@@ -375,11 +375,11 @@ class Media extends Panel {
                                 onClick: () => {
                                     videoNode.setPlayRate(this.playrate)
                                 },
-                                layoutConfig: layoutConfig().exactly(),
+                                layoutConfig: layoutConfig().just(),
                             }),)
                         } else if (index == 21) {
                             it.addChild((new Input).also(it => {
-                                it.layoutConfig = layoutConfig().exactly()
+                                it.layoutConfig = layoutConfig().just()
                                 it.width = 180
                                 it.height = 50
                                 it.text = this.playrate.toString()
@@ -400,11 +400,11 @@ class Media extends Panel {
                                 onClick: () => {
                                     videoNode.setVideoScalingMode(this.videoScalingMode)
                                 },
-                                layoutConfig: layoutConfig().exactly(),
+                                layoutConfig: layoutConfig().just(),
                             }),)
                         } else if (index == 23) {
                             it.addChild((new Input).also(it => {
-                                it.layoutConfig = layoutConfig().exactly()
+                                it.layoutConfig = layoutConfig().just()
                                 it.width = 180
                                 it.height = 50
                                 it.text = this.videoScalingMode.toString()
@@ -425,11 +425,11 @@ class Media extends Panel {
                                 onClick: () => {
                                     videoNode.setVideoScaleRate(this.scaleRate)
                                 },
-                                layoutConfig: layoutConfig().exactly(),
+                                layoutConfig: layoutConfig().just(),
                             }),)
                         } else if (index == 25) {
                             it.addChild((new Input).also(it => {
-                                it.layoutConfig = layoutConfig().exactly()
+                                it.layoutConfig = layoutConfig().just()
                                 it.width = 180
                                 it.height = 50
                                 it.text = this.scaleRate.toString()
@@ -450,11 +450,11 @@ class Media extends Panel {
                                 onClick: () => {
                                     videoNode.setVideoRotationMode(this.videoRotationMode)
                                 },
-                                layoutConfig: layoutConfig().exactly(),
+                                layoutConfig: layoutConfig().just(),
                             }),)
                         } else if (index == 27) {
                             it.addChild((new Input).also(it => {
-                                it.layoutConfig = layoutConfig().exactly()
+                                it.layoutConfig = layoutConfig().just()
                                 it.width = 180
                                 it.height = 50
                                 it.text = this.videoRotationMode.toString()
@@ -475,11 +475,11 @@ class Media extends Panel {
                                 onClick: () => {
                                     videoNode.setLooping(this.isLooping)
                                 },
-                                layoutConfig: layoutConfig().exactly(),
+                                layoutConfig: layoutConfig().just(),
                             }),)
                         } else if (index == 29) {
                             it.addChild((new Input).also(it => {
-                                it.layoutConfig = layoutConfig().exactly()
+                                it.layoutConfig = layoutConfig().just()
                                 it.width = 180
                                 it.height = 50
                                 it.text = this.isLooping.toString()
@@ -500,7 +500,7 @@ class Media extends Panel {
                                 onClick: () => {
                                     videoNode.preLoadDataSource(this.url)
                                 },
-                                layoutConfig: layoutConfig().exactly(),
+                                layoutConfig: layoutConfig().just(),
                             }),)
                         }
                     })
@@ -508,7 +508,7 @@ class Media extends Panel {
             })
         ])
             .apply({
-                layoutConfig: layoutConfig().wrap().a(Gravity.Center),
+                layoutConfig: layoutConfig().fit().configAlignmnet(Gravity.Center),
                 width: 400,
                 gravity: Gravity.Center,
             } as IVLayout)

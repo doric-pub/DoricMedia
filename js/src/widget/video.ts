@@ -195,7 +195,7 @@ export class Video extends View implements IVideo {
 
 export function video(config: IVideo) {
     const ret = new Video
-    ret.layoutConfig = layoutConfig().wrap()
+    ret.layoutConfig = layoutConfig().fit()
     for (let key in config) {
         Reflect.set(ret, key, Reflect.get(config, key, config), ret)
     }
