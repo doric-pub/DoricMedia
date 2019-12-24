@@ -49,7 +49,7 @@ public class VideoViewNode extends ViewNode<VideoTextureView> {
 
         @Override
         public void OnSeekComplete() {
-            callJSResponse(OnSeekComplete);
+            callJSResponse(onSeekComplete);
         }
     };
     private String onPrepared;
@@ -58,7 +58,7 @@ public class VideoViewNode extends ViewNode<VideoTextureView> {
     private String onCompletion;
     private String onVideoSizeChanged;
     private String onBufferingUpdate;
-    private String OnSeekComplete;
+    private String onSeekComplete;
 
     public VideoViewNode(DoricContext doricContext) {
         super(doricContext);
@@ -84,22 +84,13 @@ public class VideoViewNode extends ViewNode<VideoTextureView> {
                 JSValue videoDecodeMode = prop.asObject().getProperty("videoDecodeMode");
                 mediaPlayerOptions.videoDecodeMode = videoDecodeMode.asNumber().toInt();
 
-                JSValue externalRenderMode = prop.asObject().getProperty("externalRenderMode");
-                mediaPlayerOptions.externalRenderMode = externalRenderMode.asNumber().toInt();
-
                 JSValue backupDir = prop.asObject().getProperty("backupDir");
                 if (!backupDir.isNull()) {
                     mediaPlayerOptions.backupDir = backupDir.asString().toString();
                 }
 
-                JSValue isLoadMediaStreamer = prop.asObject().getProperty("isLoadMediaStreamer");
-                mediaPlayerOptions.isLoadMediaStreamer = isLoadMediaStreamer.asBoolean().value();
-
                 JSValue isAccurateSeek = prop.asObject().getProperty("isAccurateSeek");
                 mediaPlayerOptions.isAccurateSeek = isAccurateSeek.asBoolean().value();
-
-                JSValue isUseNewPrivateMediaPlayerCore = prop.asObject().getProperty("isUseNewPrivateMediaPlayerCore");
-                mediaPlayerOptions.isUseNewPrivateMediaPlayerCore = isUseNewPrivateMediaPlayerCore.asBoolean().value();
 
                 JSValue http_proxy = prop.asObject().getProperty("http_proxy");
                 if (!http_proxy.isNull()) {
@@ -143,8 +134,8 @@ public class VideoViewNode extends ViewNode<VideoTextureView> {
                 this.onBufferingUpdate = prop.asString().value();
             }
             break;
-            case "OnSeekComplete": {
-                this.OnSeekComplete = prop.asString().value();
+            case "onSeekComplete": {
+                this.onSeekComplete = prop.asString().value();
             }
             break;
             default:

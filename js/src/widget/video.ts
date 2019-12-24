@@ -22,15 +22,9 @@ export class MediaPlayerOptions {
 
     videoDecodeMode: number = 1
 
-    externalRenderMode: number = 0
-
     backupDir?: string
 
-    isLoadMediaStreamer: boolean = false
-
     isAccurateSeek: boolean = true
-
-    isUseNewPrivateMediaPlayerCore: boolean = false
 
     http_proxy?: string
 
@@ -56,7 +50,7 @@ export interface IVideo extends IView {
 
     onBufferingUpdate?: Function
 
-    OnSeekComplete?: Function
+    onSeekComplete?: Function
 }
 
 export class Video extends View implements IVideo {
@@ -82,7 +76,7 @@ export class Video extends View implements IVideo {
     onBufferingUpdate?: Function
 
     @Property
-    OnSeekComplete?: Function
+    onSeekComplete?: Function
 
     setDataSource(path: string, type: number) {
         this.nativeChannel(context, 'setDataSource')({

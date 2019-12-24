@@ -66,8 +66,8 @@ class Media extends Panel {
             onBufferingUpdate: (percent: number) => {
                 logNode.text += "onBufferingUpdate: " + percent + "\n"
             },
-            OnSeekComplete: () => {
-                logNode.text += "OnSeekComplete\n"
+            onSeekComplete: () => {
+                logNode.text += "onSeekComplete\n"
             },
         }).apply({
             layoutConfig: layoutConfig().just(),
