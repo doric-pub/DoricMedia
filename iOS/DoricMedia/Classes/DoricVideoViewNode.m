@@ -26,10 +26,8 @@
 #import "DoricGroupNode.h"
 
 @implementation DoricVideoViewNode
-- (UILabel *)build {
-    return [[[UILabel alloc] init] also:^(UILabel *it) {
-        it.textAlignment = NSTextAlignmentCenter;
-    }];
+- (YPPVideoView *)build {
+    return [[YPPVideoView alloc] init];
 }
 
 - (void)blendView:(UILabel *)view forPropName:(NSString *)name propValue:(id)prop {

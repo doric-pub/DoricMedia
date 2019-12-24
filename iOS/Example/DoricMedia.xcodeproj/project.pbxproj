@@ -32,7 +32,6 @@
 		6003F597195388D20070C39A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		6003F599195388D20070C39A /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		6003F59B195388D20070C39A /* DoricMedia-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "DoricMedia-Prefix.pch"; sourceTree = "<group>"; };
-		6003F59C195388D20070C39A /* DORICAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DORICAppDelegate.h; sourceTree = "<group>"; };
 		6003F59D195388D20070C39A /* DORICAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DORICAppDelegate.m; sourceTree = "<group>"; };
 		6003F5A5195388D20070C39A /* DORICViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DORICViewController.h; sourceTree = "<group>"; };
 		6003F5A6195388D20070C39A /* DORICViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DORICViewController.m; sourceTree = "<group>"; };
@@ -44,6 +43,7 @@
 		7C779EFC9BAF15F546653B23 /* Pods-DoricMedia_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DoricMedia_Example.release.xcconfig"; path = "Target Support Files/Pods-DoricMedia_Example/Pods-DoricMedia_Example.release.xcconfig"; sourceTree = "<group>"; };
 		873B8AEA1B1F5CCA007FD442 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Main.storyboard; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		8B5EC2AF23B1EA9400FF0AED /* src */ = {isa = PBXFileReference; lastKnownFileType = folder; name = src; path = ../../../js/bundle/src; sourceTree = "<group>"; };
+		8BE8817A23B200480093DC05 /* DORICAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DORICAppDelegate.h; sourceTree = "<group>"; };
 		B04A13E827B1D638546C893E /* DoricMedia.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = DoricMedia.podspec; path = ../DoricMedia.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		B1EA3DB95F377C8B4C753CFB /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
 		F613391805E47D0777D21265 /* Pods_DoricMedia_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DoricMedia_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -111,8 +111,8 @@
 		6003F593195388D20070C39A /* Example for DoricMedia */ = {
 			isa = PBXGroup;
 			children = (
-				6003F59C195388D20070C39A /* DORICAppDelegate.h */,
 				8B5EC2AF23B1EA9400FF0AED /* src */,
+				8BE8817A23B200480093DC05 /* DORICAppDelegate.h */,
 				6003F59D195388D20070C39A /* DORICAppDelegate.m */,
 				873B8AEA1B1F5CCA007FD442 /* Main.storyboard */,
 				6003F5A5195388D20070C39A /* DORICViewController.h */,

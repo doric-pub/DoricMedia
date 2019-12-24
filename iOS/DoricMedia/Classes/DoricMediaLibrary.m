@@ -14,19 +14,21 @@
  * limitations under the License.
  */
 //
-//  DoricVideoViewNode.h
+//  DoricMediaLibrary.m
 //  DoricMedia
 //
 //  Created by jingpeng.wang on 2019/12/24.
 //
 
-#import "DoricViewNode.h"
-#import <MediaPlayerFramework/YPPVideoView.h>
+#import "Doric.h"
+#import "DoricMediaLibrary.h"
+#import "DoricVideoViewNode.h"
 
-NS_ASSUME_NONNULL_BEGIN
+@implementation DoricMediaLibrary
 
-@interface DoricVideoViewNode : DoricViewNode<YPPVideoView *>
+- (void)load:(DoricRegistry *)registry {
+    [registry registerViewNode:DoricVideoViewNode.class withName:@"Video"];
+}
 
 @end
 
-NS_ASSUME_NONNULL_END

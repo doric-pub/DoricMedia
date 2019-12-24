@@ -7,12 +7,16 @@
 //
 
 #import "DORICAppDelegate.h"
-#import <Doric.h>
+#import "Doric.h"
+#import "DoricMediaLibrary.h"
 
 @implementation DORICAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    DoricMediaLibrary* library = [[DoricMediaLibrary alloc] init];
+    [DoricRegistry register:library];
+    
     // Override point for customization after application launch.
     NSString *bundleName = @"doriclib-media";
     DoricViewController *doricViewController = [[DoricViewController alloc] initWithScheme:[NSString stringWithFormat:@"assets://src/%@.js", bundleName] alias:bundleName extra:@""];
