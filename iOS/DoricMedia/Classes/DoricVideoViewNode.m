@@ -22,32 +22,17 @@
 
 #import "Doric.h"
 #import "DoricVideoViewNode.h"
-#import "DoricUtil.h"
-#import "DoricGroupNode.h"
+#import <MediaPlayerFramework/MediaPlayer.h>
 
 @implementation DoricVideoViewNode
+
 - (YPPVideoView *)build {
     return [[YPPVideoView alloc] init];
 }
 
-- (void)blendView:(UILabel *)view forPropName:(NSString *)name propValue:(id)prop {
-    if ([name isEqualToString:@"text"]) {
-        view.text = prop;
-    } else if ([name isEqualToString:@"textSize"]) {
-        view.font = [UIFont systemFontOfSize:[(NSNumber *) prop floatValue]];
-    } else if ([name isEqualToString:@"textColor"]) {
-        view.textColor = DoricColor(prop);
-    } else if ([name isEqualToString:@"textAlignment"]) {
-        DoricGravity gravity = (DoricGravity) [(NSNumber *) prop integerValue];
-        NSTextAlignment alignment = NSTextAlignmentCenter;
-        if ((gravity & LEFT) == LEFT) {
-            alignment = NSTextAlignmentLeft;
-        } else if ((gravity & RIGHT) == RIGHT) {
-            alignment = NSTextAlignmentRight;
-        }
-        view.textAlignment = alignment;
-    } else if ([name isEqualToString:@"maxLines"]) {
-        view.numberOfLines = [prop integerValue];
+- (void)blendView:(YPPVideoView *)view forPropName:(NSString *)name propValue:(id)prop {
+    if ([name isEqualToString:@"mediaPlayerOptions"]) {
+        
     } else {
         [super blendView:view forPropName:name propValue:prop];
     }

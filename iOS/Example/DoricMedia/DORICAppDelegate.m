@@ -7,8 +7,8 @@
 //
 
 #import "DORICAppDelegate.h"
-#import "Doric.h"
-#import "DoricMediaLibrary.h"
+#import <Doric.h>
+#import <DoricMediaLibrary.h>
 
 @implementation DORICAppDelegate
 
