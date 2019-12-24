@@ -91,7 +91,7 @@ class Media extends Panel {
         })
         let currentPositionNode = (new Input).also(it => {
             it.layoutConfig = layoutConfig().just()
-            it.width = 180
+            it.width = (Environment.screenWidth - 10) / 2
             it.height = 50
             it.text = ""
             it.multiline = false
@@ -102,7 +102,7 @@ class Media extends Panel {
         })
         let durationNode = (new Input).also(it => {
             it.layoutConfig = layoutConfig().just()
-            it.width = 180
+            it.width = (Environment.screenWidth - 10) / 2
             it.height = 50
             it.text = ""
             it.multiline = false
@@ -116,7 +116,7 @@ class Media extends Panel {
             pathNode,
             logNode,
             flowlayout({
-                layoutConfig: layoutConfig().fit(),
+                layoutConfig: layoutConfig().most(),
                 itemCount: 31,
                 columnCount: 2,
                 columnSpace: 10,
@@ -128,7 +128,7 @@ class Media extends Panel {
                         if (index == 0) {
                             it.addChild(text({
                                 text: "setDataSource",
-                                width: 180,
+                                width: (Environment.screenWidth - 10) / 2,
                                 height: 50,
                                 textSize: 17,
                                 backgroundColor: Color.RED,
@@ -141,7 +141,7 @@ class Media extends Panel {
                         } else if (index == 1) {
                             it.addChild(text({
                                 text: "prepareAsync",
-                                width: 180,
+                                width: (Environment.screenWidth - 10) / 2,
                                 height: 50,
                                 textSize: 17,
                                 backgroundColor: Color.RED,
@@ -154,7 +154,7 @@ class Media extends Panel {
                         } else if (index == 2) {
                             it.addChild(text({
                                 text: "prepareAsyncWithStartPos",
-                                width: 180,
+                                width: (Environment.screenWidth - 10) / 2,
                                 height: 50,
                                 textSize: 15,
                                 backgroundColor: Color.RED,
@@ -167,7 +167,7 @@ class Media extends Panel {
                         } else if (index == 3) {
                             it.addChild((new Input).also(it => {
                                 it.layoutConfig = layoutConfig().just()
-                                it.width = 180
+                                it.width = (Environment.screenWidth - 10) / 2
                                 it.height = 50
                                 it.text = this.startPosMs.toString()
                                 it.multiline = false
@@ -179,7 +179,7 @@ class Media extends Panel {
                         } else if (index == 4) {
                             it.addChild(text({
                                 text: "start",
-                                width: 180,
+                                width: (Environment.screenWidth - 10) / 2,
                                 height: 50,
                                 textSize: 20,
                                 backgroundColor: Color.RED,
@@ -192,7 +192,7 @@ class Media extends Panel {
                         } else if (index == 5) {
                             it.addChild(text({
                                 text: "pause",
-                                width: 180,
+                                width: (Environment.screenWidth - 10) / 2,
                                 height: 50,
                                 textSize: 20,
                                 backgroundColor: Color.RED,
@@ -205,7 +205,7 @@ class Media extends Panel {
                         } else if (index == 6) {
                             it.addChild(text({
                                 text: "seekTo",
-                                width: 180,
+                                width: (Environment.screenWidth - 10) / 2,
                                 height: 50,
                                 textSize: 20,
                                 backgroundColor: Color.RED,
@@ -218,7 +218,7 @@ class Media extends Panel {
                         } else if (index == 7) {
                             it.addChild((new Input).also(it => {
                                 it.layoutConfig = layoutConfig().just()
-                                it.width = 180
+                                it.width = (Environment.screenWidth - 10) / 2
                                 it.height = 50
                                 it.text = this.msec.toString()
                                 it.multiline = false
@@ -230,7 +230,7 @@ class Media extends Panel {
                         } else if (index == 8) {
                             it.addChild(text({
                                 text: "stop",
-                                width: 180,
+                                width: (Environment.screenWidth - 10) / 2,
                                 height: 50,
                                 textSize: 20,
                                 backgroundColor: Color.RED,
@@ -243,7 +243,7 @@ class Media extends Panel {
                         } else if (index == 9) {
                             it.addChild((new Input).also(it => {
                                 it.layoutConfig = layoutConfig().just()
-                                it.width = 180
+                                it.width = (Environment.screenWidth - 10) / 2
                                 it.height = 50
                                 it.text = this.blackDisplay.toString()
                                 it.multiline = false
@@ -255,7 +255,7 @@ class Media extends Panel {
                         } else if (index == 10) {
                             it.addChild(text({
                                 text: "grabDisplayShot",
-                                width: 180,
+                                width: (Environment.screenWidth - 10) / 2,
                                 height: 50,
                                 textSize: 20,
                                 backgroundColor: Color.RED,
@@ -268,7 +268,7 @@ class Media extends Panel {
                         } else if (index == 11) {
                             it.addChild((new Input).also(it => {
                                 it.layoutConfig = layoutConfig().just()
-                                it.width = 180
+                                it.width = (Environment.screenWidth - 10) / 2
                                 it.height = 50
                                 it.text = this.shotPath
                                 it.multiline = false
@@ -280,7 +280,7 @@ class Media extends Panel {
                         } else if (index == 12) {
                             it.addChild(text({
                                 text: "release",
-                                width: 180,
+                                width: (Environment.screenWidth - 10) / 2,
                                 height: 50,
                                 textSize: 20,
                                 backgroundColor: Color.RED,
@@ -293,7 +293,7 @@ class Media extends Panel {
                         } else if (index == 13) {
                             it.addChild(text({
                                 text: "initialize",
-                                width: 180,
+                                width: (Environment.screenWidth - 10) / 2,
                                 height: 50,
                                 textSize: 20,
                                 backgroundColor: Color.RED,
@@ -306,7 +306,7 @@ class Media extends Panel {
                         } else if (index == 14) {
                             it.addChild(text({
                                 text: "getCurrentPosition",
-                                width: 180,
+                                width: (Environment.screenWidth - 10) / 2,
                                 height: 50,
                                 textSize: 20,
                                 backgroundColor: Color.RED,
@@ -324,7 +324,7 @@ class Media extends Panel {
                         } else if (index == 16) {
                             it.addChild(text({
                                 text: "getDuration",
-                                width: 180,
+                                width: (Environment.screenWidth - 10) / 2,
                                 height: 50,
                                 textSize: 20,
                                 backgroundColor: Color.RED,
@@ -342,7 +342,7 @@ class Media extends Panel {
                         } else if (index == 18) {
                             it.addChild(text({
                                 text: "setVolume",
-                                width: 180,
+                                width: (Environment.screenWidth - 10) / 2,
                                 height: 50,
                                 textSize: 20,
                                 backgroundColor: Color.RED,
@@ -355,7 +355,7 @@ class Media extends Panel {
                         } else if (index == 19) {
                             it.addChild((new Input).also(it => {
                                 it.layoutConfig = layoutConfig().just()
-                                it.width = 180
+                                it.width = (Environment.screenWidth - 10) / 2
                                 it.height = 50
                                 it.text = this.volume.toString()
                                 it.multiline = false
@@ -367,7 +367,7 @@ class Media extends Panel {
                         } else if (index == 20) {
                             it.addChild(text({
                                 text: "setPlayRate",
-                                width: 180,
+                                width: (Environment.screenWidth - 10) / 2,
                                 height: 50,
                                 textSize: 20,
                                 backgroundColor: Color.RED,
@@ -380,7 +380,7 @@ class Media extends Panel {
                         } else if (index == 21) {
                             it.addChild((new Input).also(it => {
                                 it.layoutConfig = layoutConfig().just()
-                                it.width = 180
+                                it.width = (Environment.screenWidth - 10) / 2
                                 it.height = 50
                                 it.text = this.playrate.toString()
                                 it.multiline = false
@@ -392,7 +392,7 @@ class Media extends Panel {
                         } else if (index == 22) {
                             it.addChild(text({
                                 text: "setVideoScalingMode",
-                                width: 180,
+                                width: (Environment.screenWidth - 10) / 2,
                                 height: 50,
                                 textSize: 18,
                                 backgroundColor: Color.RED,
@@ -405,7 +405,7 @@ class Media extends Panel {
                         } else if (index == 23) {
                             it.addChild((new Input).also(it => {
                                 it.layoutConfig = layoutConfig().just()
-                                it.width = 180
+                                it.width = (Environment.screenWidth - 10) / 2
                                 it.height = 50
                                 it.text = this.videoScalingMode.toString()
                                 it.multiline = false
@@ -417,7 +417,7 @@ class Media extends Panel {
                         } else if (index == 24) {
                             it.addChild(text({
                                 text: "setVideoScaleRate",
-                                width: 180,
+                                width: (Environment.screenWidth - 10) / 2,
                                 height: 50,
                                 textSize: 20,
                                 backgroundColor: Color.RED,
@@ -430,7 +430,7 @@ class Media extends Panel {
                         } else if (index == 25) {
                             it.addChild((new Input).also(it => {
                                 it.layoutConfig = layoutConfig().just()
-                                it.width = 180
+                                it.width = (Environment.screenWidth - 10) / 2
                                 it.height = 50
                                 it.text = this.scaleRate.toString()
                                 it.multiline = false
@@ -442,7 +442,7 @@ class Media extends Panel {
                         } else if (index == 26) {
                             it.addChild(text({
                                 text: "setVideoRotationMode",
-                                width: 180,
+                                width: (Environment.screenWidth - 10) / 2,
                                 height: 50,
                                 textSize: 18,
                                 backgroundColor: Color.RED,
@@ -455,7 +455,7 @@ class Media extends Panel {
                         } else if (index == 27) {
                             it.addChild((new Input).also(it => {
                                 it.layoutConfig = layoutConfig().just()
-                                it.width = 180
+                                it.width = (Environment.screenWidth - 10) / 2
                                 it.height = 50
                                 it.text = this.videoRotationMode.toString()
                                 it.multiline = false
@@ -467,7 +467,7 @@ class Media extends Panel {
                         } else if (index == 28) {
                             it.addChild(text({
                                 text: "setLooping",
-                                width: 180,
+                                width: (Environment.screenWidth - 10) / 2,
                                 height: 50,
                                 textSize: 20,
                                 backgroundColor: Color.RED,
@@ -480,7 +480,7 @@ class Media extends Panel {
                         } else if (index == 29) {
                             it.addChild((new Input).also(it => {
                                 it.layoutConfig = layoutConfig().just()
-                                it.width = 180
+                                it.width = (Environment.screenWidth - 10) / 2
                                 it.height = 50
                                 it.text = this.isLooping.toString()
                                 it.multiline = false
@@ -492,7 +492,7 @@ class Media extends Panel {
                         } else if (index == 30) {
                             it.addChild(text({
                                 text: "preLoadDataSource",
-                                width: 180,
+                                width: (Environment.screenWidth - 10) / 2,
                                 height: 50,
                                 textSize: 20,
                                 backgroundColor: Color.RED,
