@@ -20,9 +20,11 @@
 //  Created by jingpeng.wang on 2019/12/24.
 //
 
-#import "Doric.h"
 #import "DoricVideoViewNode.h"
-#import <MediaPlayerFramework/MediaPlayer.h>
+
+@interface DoricVideoViewNode() <MediaPlayerDelegate>
+
+@end
 
 @implementation DoricVideoViewNode
 
@@ -32,7 +34,37 @@
 
 - (void)blendView:(YPPVideoView *)view forPropName:(NSString *)name propValue:(id)prop {
     if ([name isEqualToString:@"mediaPlayerOptions"]) {
+        _mediaPlayerOptions = [[MediaPlayerOptions alloc] init];
         
+        NSDictionary *dic = prop;
+        _mediaPlayerOptions.media_player_mode = [(NSNumber *) dic[@"mediaPlayerMode"] intValue];
+        _mediaPlayerOptions.pause_in_background = [(NSNumber *) dic[@"pauseInBackground"] intValue];
+        _mediaPlayerOptions.video_decode_mode = [(NSNumber *) dic[@"videoDecodeMode"] intValue];
+        _mediaPlayerOptions.record_mode = [(NSNumber *) dic[@"recordMode"] intValue];
+        _mediaPlayerOptions.backupDir = [dic[@"backupDir"] stringValue];
+        _mediaPlayerOptions.isAccurateSeek = [dic[@"isAccurateSeek"] boolValue];
+        _mediaPlayerOptions.http_proxy = [dic[@"http_proxy"] stringValue];
+        
+        _mediaPlayerOptions.enableAsyncDNSResolver = [dic[@"enableAsyncDNSResolver"] boolValue];
+        
+        _mediaPlayerOptions.isVideoOpaque = [dic[@"isVideoOpaque"] boolValue];
+        
+        [view initializeWithOptions:_mediaPlayerOptions];
+        view.delegate = self;
+    } else if ([name isEqualToString:@"onPrepared"]) {
+        _onPrepare = prop;
+    } else if ([name isEqualToString:@"onError"]) {
+        _onError = prop;
+    } else if ([name isEqualToString:@"onInfo"]) {
+        _onError = prop;
+    } else if ([name isEqualToString:@"onCompletion"]) {
+        _onCompletion = prop;
+    } else if ([name isEqualToString:@"onVideoSizeChanged"]) {
+        _onVideoSizeChanged = prop;
+    } else if ([name isEqualToString:@"onBufferingUpdate"]) {
+        _onBufferingUpdate = prop;
+    } else if ([name isEqualToString:@"onSeekComplete"]) {
+        _onSeekComplete = prop;
     } else {
         [super blendView:view forPropName:name propValue:prop];
     }
@@ -42,5 +74,115 @@
     [super blend:props];
     [self.view.superview setNeedsLayout];
 }
-@end
 
+- (void)initialize {
+    [self.view initialize];
+}
+
+- (void)setDataSource:(NSDictionary *)props {
+    [self.view setDataSourceWithUrl:props[@"path"] DataSourceType:[(NSNumber *)props[@"type"] intValue]];
+}
+
+- (void)prepareAsync {
+    [self.view prepareAsync];
+}
+
+- (void)prepareAsyncWithStartPos:(NSDictionary *)props {
+    [self.view prepareAsyncWithStartPos:[(NSNumber *)props[@"startPosMs"] intValue]];
+}
+
+- (void)start {
+    [self.view start];
+}
+
+- (void)pause {
+    [self.view pause];
+}
+
+- (void)stop:(NSDictionary *)props {
+    [self.view stop:[props[@"blackDisplay"] boolValue]];
+}
+
+- (void)seekTo:(NSDictionary *)props {
+    [self.view seekTo:[(NSNumber *)props[@"msec"] intValue]];
+}
+
+- (void)grabDisplayShot:(NSDictionary *)props {
+    [self.view grabDisplayShot:[props[@"shotPath"] stringValue]];
+}
+
+- (void)release:(NSDictionary *)props {
+    [self.view terminate];
+}
+
+- (NSNumber *)getCurrentPosition {
+    NSInteger time = self.view.currentPlaybackTime;
+    return [NSNumber numberWithInteger: time];
+}
+
+- (NSNumber *)getDuration {
+    NSInteger time = self.view.duration;
+    return [NSNumber numberWithInteger: time];
+}
+
+- (void)setFilter:(NSDictionary *)props {
+    [self.view setFilterWithType:[(NSNumber *)props[@"type"] intValue] WithDir:[props[@"filterDir"] stringValue]];
+}
+
+- (void)setVolume:(NSDictionary *)props {
+    [self.view setVolume:[(NSNumber *)props[@"volume"] doubleValue]];
+}
+
+- (void)setPlayRate:(NSDictionary *)props {
+    [self.view setPlayRate:[(NSNumber *)props[@"playrate"] doubleValue]];
+}
+
+- (void)setVideoScalingMode:(NSDictionary *)props {
+    [self.view setVideoScalingMode:[(NSNumber *)props[@"mode"] intValue]];
+}
+
+- (void)setVideoScaleRate:(NSDictionary *)props {
+    [self.view setVideoScaleRate:[(NSNumber *)props[@"scaleRate"] doubleValue]];
+}
+
+- (void)setVideoRotationMode:(NSDictionary *)props {
+    [self.view setVideoRotationMode:[(NSNumber *)props[@"mode"] intValue]];
+}
+
+- (void)setLooping:(NSDictionary *)props {
+    [self.view setLooping:[props[@"isLooping"] boolValue]];
+}
+
+- (void)preLoadDataSource:(NSDictionary *)props {
+    [self.view preLoadDataSourceWithUrl:[props[@"url"] stringValue]];
+}
+
+- (void)onBufferingUpdateWithPercent:(int)percent {
+
+}
+
+- (void)onCompletion {
+    
+}
+
+- (void)onErrorWithErrorType:(int)errorType {
+
+}
+
+- (void)onInfoWithInfoType:(int)infoType InfoValue:(int)infoValue {
+
+}
+
+- (void)onPrepared {
+    
+}
+
+- (void)onSeekComplete {
+
+}
+
+- (void)onVideoSizeChangedWithVideoWidth:(int)width VideoHeight:(int)height {
+
+}
+
+@end
