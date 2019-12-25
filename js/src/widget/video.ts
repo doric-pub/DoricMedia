@@ -33,6 +33,8 @@ export class MediaPlayerOptions {
     isVideoOpaque: boolean = true
 
     pauseInBackground: boolean = false
+
+    externalRenderMode: number = 0
 }
 
 export interface IVideo extends IView {
@@ -177,12 +179,6 @@ export class Video extends View implements IVideo {
     setLooping(isLooping: boolean) {
         this.nativeChannel(context, 'setLooping')({
             isLooping: isLooping
-        })
-    }
-
-    preLoadDataSource(url: string) {
-        this.nativeChannel(context, 'preLoadDataSource')({
-            url: url
         })
     }
 }

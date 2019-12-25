@@ -106,6 +106,9 @@ public class VideoViewNode extends ViewNode<VideoTextureView> {
                 JSValue pauseInBackground = prop.asObject().getProperty("pauseInBackground");
                 mediaPlayerOptions.pauseInBackground = pauseInBackground.asBoolean().value();
 
+                JSValue externalRenderMode = prop.asObject().getProperty("externalRenderMode");
+                mediaPlayerOptions.externalRenderMode = externalRenderMode.asNumber().toInt();
+
                 view.initialize(mediaPlayerOptions);
                 view.setListener(videoViewListener);
             }
@@ -244,10 +247,5 @@ public class VideoViewNode extends ViewNode<VideoTextureView> {
     @DoricMethod
     public void setLooping(JSValue value) {
         this.mView.setLooping(value.asObject().getProperty("isLooping").asBoolean().value());
-    }
-
-    @DoricMethod
-    public void preLoadDataSource(JSValue value) {
-        this.mView.preLoadDataSource(value.asObject().getProperty("url").asString().value());
     }
 }

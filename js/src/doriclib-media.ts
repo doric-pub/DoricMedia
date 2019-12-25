@@ -117,7 +117,7 @@ class Media extends Panel {
             logNode,
             flowlayout({
                 layoutConfig: layoutConfig().most(),
-                itemCount: 31,
+                itemCount: 30,
                 columnCount: 2,
                 columnSpace: 10,
                 rowSpace: 10,
@@ -488,19 +488,6 @@ class Media extends Panel {
                                 it.onTextChange = (text: string) => {
                                     this.isLooping = Boolean(text)
                                 }
-                            }),)
-                        } else if (index == 30) {
-                            it.addChild(text({
-                                text: "preLoadDataSource",
-                                width: (Environment.screenWidth - 10) / 2,
-                                height: 50,
-                                textSize: 20,
-                                backgroundColor: Color.RED,
-                                textColor: Color.WHITE,
-                                onClick: () => {
-                                    videoNode.preLoadDataSource(this.url)
-                                },
-                                layoutConfig: layoutConfig().just(),
                             }),)
                         }
                     })
