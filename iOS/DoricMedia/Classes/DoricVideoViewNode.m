@@ -52,19 +52,19 @@
         [view initializeWithOptions:_mediaPlayerOptions];
         view.delegate = self;
     } else if ([name isEqualToString:@"onPrepared"]) {
-        _onPrepare = prop;
+        _onPrepareFunction = prop;
     } else if ([name isEqualToString:@"onError"]) {
-        _onError = prop;
+        _onErrorFunction = prop;
     } else if ([name isEqualToString:@"onInfo"]) {
-        _onError = prop;
+        _onInfoFunction = prop;
     } else if ([name isEqualToString:@"onCompletion"]) {
-        _onCompletion = prop;
+        _onCompletionFunction = prop;
     } else if ([name isEqualToString:@"onVideoSizeChanged"]) {
-        _onVideoSizeChanged = prop;
+        _onVideoSizeChangedFunction = prop;
     } else if ([name isEqualToString:@"onBufferingUpdate"]) {
-        _onBufferingUpdate = prop;
+        _onBufferingUpdateFunction = prop;
     } else if ([name isEqualToString:@"onSeekComplete"]) {
-        _onSeekComplete = prop;
+        _onSeekCompleteFunction = prop;
     } else {
         [super blendView:view forPropName:name propValue:prop];
     }
@@ -153,36 +153,32 @@
     [self.view setLooping:[props[@"isLooping"] boolValue]];
 }
 
-- (void)preLoadDataSource:(NSDictionary *)props {
-    [self.view preLoadDataSourceWithUrl:[props[@"url"] stringValue]];
-}
-
 - (void)onBufferingUpdateWithPercent:(int)percent {
-
+    [self callJSResponse:_onBufferingUpdateFunction, @(percent), nil];
 }
 
 - (void)onCompletion {
-    
+    [self callJSResponse:_onCompletionFunction, nil];
 }
 
 - (void)onErrorWithErrorType:(int)errorType {
-
+    [self callJSResponse:_onErrorFunction, @(errorType), nil];
 }
 
 - (void)onInfoWithInfoType:(int)infoType InfoValue:(int)infoValue {
-
+    [self callJSResponse:_onInfoFunction, @(infoType), @(infoValue), nil];
 }
 
 - (void)onPrepared {
-    
+    [self callJSResponse:_onPrepareFunction, nil];
 }
 
 - (void)onSeekComplete {
-
+    [self callJSResponse:_onSeekCompleteFunction, nil];
 }
 
 - (void)onVideoSizeChangedWithVideoWidth:(int)width VideoHeight:(int)height {
-
+    [self callJSResponse:_onVideoSizeChangedFunction, @(width), @(height), nil];
 }
 
 @end

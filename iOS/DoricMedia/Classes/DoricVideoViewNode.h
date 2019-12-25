@@ -31,13 +31,13 @@ NS_ASSUME_NONNULL_BEGIN
 @property(nonatomic, strong) MediaPlayerOptions *mediaPlayerOptions;
 @property(nonatomic, weak)id<MediaPlayerDelegate> delegate;
 
-@property(nonatomic, strong) NSString *onPrepare;
-@property(nonatomic, strong) NSString *onError;
-@property(nonatomic, strong) NSString *onInfo;
-@property(nonatomic, strong) NSString *onCompletion;
-@property(nonatomic, strong) NSString *onVideoSizeChanged;
-@property(nonatomic, strong) NSString *onBufferingUpdate;
-@property(nonatomic, strong) NSString *onSeekComplete;
+@property(nonatomic, strong) NSString *onPrepareFunction;
+@property(nonatomic, strong) NSString *onErrorFunction;
+@property(nonatomic, strong) NSString *onInfoFunction;
+@property(nonatomic, strong) NSString *onCompletionFunction;
+@property(nonatomic, strong) NSString *onVideoSizeChangedFunction;
+@property(nonatomic, strong) NSString *onBufferingUpdateFunction;
+@property(nonatomic, strong) NSString *onSeekCompleteFunction;
 
 @end
 
