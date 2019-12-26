@@ -4,7 +4,7 @@ import android.app.Application;
 
 import pub.doric.Doric;
 import pub.doric.DoricRegistry;
-import pub.doric.media.MediaLibrary;
+import pub.doric.extension.MediaLibrary;
 
 /**
  * @Description: pub.doric.example

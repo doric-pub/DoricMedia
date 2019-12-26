@@ -28,3 +28,5 @@ dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar', '*.aar'])
     implementation "pub.doric:core:0.2.1"
 }
+
+apply from: rootProject.file('scripts/upload.gradle')

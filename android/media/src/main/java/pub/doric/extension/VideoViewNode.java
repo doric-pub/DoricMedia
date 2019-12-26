@@ -1,4 +1,4 @@
-package pub.doric.media;
+package pub.doric.extension;
 
 
 import android.slkmedia.mediaplayer.MediaPlayer;

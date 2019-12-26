@@ -22,8 +22,33 @@ allprojects {
             url "https://dl.bintray.com/osborn/Android"
         }
     }
+    def needReplaceLocal = true
+    gradle.startParameter.taskNames.each {
+        if (it.contains('uploadArchives')) {
+            needReplaceLocal = false
+        }
+    }
+    if (needReplaceLocal) {
+        configurations.all {
+            resolutionStrategy {
+                dependencySubstitution {
+                    substitute module('pub.doric.extension:media') with project(":media")
+                }
+            }
+        }
+    }
 }
 
 task clean(type: Delete) {
     delete rootProject.buildDir
+}
+
+Properties properties = new Properties()
+properties.load(project.rootProject.file('version.properties').newDataInputStream())
+ext {
+    Version = properties.version
+}
+
+task publisMedia dependsOn(":media:uploadArchives") {
+    println "media published"
 }

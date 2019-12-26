@@ -1,4 +1,4 @@
-package pub.doric.media;
+package pub.doric.extension;
 
 import pub.doric.DoricComponent;
 import pub.doric.DoricLibrary;

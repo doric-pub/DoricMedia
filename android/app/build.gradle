@@ -26,9 +26,10 @@ android {
 
     dependencies {
         implementation fileTree(dir: 'libs', include: ['*.jar'])
-        implementation project(":media")
+
         implementation 'androidx.appcompat:appcompat:1.1.0'
-        implementation "pub.doric:core:0.2.1"
+        implementation 'pub.doric:core:0.2.1'
+        implementation "pub.doric.extension:media:${rootProject.ext.Version}"
     }
 }
 
