@@ -3,6 +3,6 @@ use_frameworks!
 platform :ios, '8.0'
 
 target 'DoricMedia_Example' do
-  pod 'DoricMedia', :path => '../'
+  pod 'DoricMedia', :path => '../../'
   pod 'DoricCore'
 end
