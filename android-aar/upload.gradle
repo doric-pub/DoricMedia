@@ -1,0 +1,42 @@
+apply plugin: 'maven'
+println("当前目录${projectDir}")
+
+Properties properties = new Properties()
+properties.load(project.rootProject.file('maven.properties').newDataInputStream())
+properties.load(new FileInputStream("${projectDir}/pom.properties"))
+properties.load(project.rootProject.file('local.properties').newDataInputStream())
+
+apply plugin: 'maven'
+
+uploadArchives {
+    repositories {
+        mavenDeployer {
+            pom.groupId = properties.groupId
+            pom.artifactId = properties.artifactId
+            pom.version = '0.1.0'
+
+            pom.project {
+                description 'git rev-parse HEAD'.execute([], projectDir).text.trim()
+            }
+
+            repository(url: properties.releasesRepository + properties.name) {
+                authentication(userName: properties.user, password: properties.apiKey)
+            }
+        }
+    }
+}
+
+def aars = file(projectDir).list(new FilenameFilter() {
+    @Override
+    boolean accept(File file, String s) {
+        return s.endsWith("aar")
+    }
+})
+
+if (aars == null || aars.length != 1) {
+    println('每个目录里只能放一个aar文件')
+} else {
+    artifacts {
+        archives file(aars[0])
+    }
+}
