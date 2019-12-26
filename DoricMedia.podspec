@@ -28,13 +28,17 @@ A powerful media framework & library built for doric.
   s.source           = { :git => 'https://github.com/doric-pub/doriclib-media.git', :tag => s.version.to_s }
   # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
 
-  s.ios.deployment_target = '8.0'
+  s.ios.deployment_target = '10.0'
 
   s.source_files = 'iOS/DoricMedia/Classes/**/*'
   
   # s.resource_bundles = {
   #   'DoricMedia' => ['DoricMedia/Assets/*.png']
   # }
+  valid_archs = ['armv7s','arm64','x86_64']
+  s.xcconfig = {
+	  'VALID_ARCHS' =>  valid_archs.join(' '),
+	}
 
   s.public_header_files = 'iOS/DoricMedia/Classes/**/*.h'
   # s.frameworks = 'UIKit', 'MapKit'
