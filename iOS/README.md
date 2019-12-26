@@ -27,3 +27,6 @@ jingpeng, jingpeng.wang@outlook.com
 ## License
 
 DoricMedia is available under the MIT license. See the LICENSE file for more info.
+
+## Command Help
+pod lib lint DoricMedia.podspec --use-libraries --verbose
