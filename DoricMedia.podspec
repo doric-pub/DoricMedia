@@ -30,14 +30,14 @@ TODO: Add long description of the pod here.
 
   s.ios.deployment_target = '8.0'
 
-  s.source_files = 'DoricMedia/Classes/**/*'
+  s.source_files = 'iOS/DoricMedia/Classes/**/*'
   
   # s.resource_bundles = {
   #   'DoricMedia' => ['DoricMedia/Assets/*.png']
   # }
 
-  # s.public_header_files = 'Pod/Classes/**/*.h'
+  s.public_header_files = 'iOS/DoricMedia/Classes/DoricMediaLibrary.h'
   # s.frameworks = 'UIKit', 'MapKit'
-   s.vendored_frameworks = "iOS/MediaPlayerFramework.framework"
-   s.dependency 'DoricCore'
+  s.vendored_frameworks = "iOS/MediaPlayerFramework.framework"
+  s.dependency 'DoricCore'
 end
