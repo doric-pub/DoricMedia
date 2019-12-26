@@ -18,12 +18,12 @@ Pod::Spec.new do |s|
 #   * Finally, don't worry about the indent, CocoaPods strips it!
 
   s.description      = <<-DESC
-TODO: Add long description of the pod here.
+A powerful media framework & library built for doric.
                        DESC
 
   s.homepage         = 'https://github.com/doric-pub/doriclib-media'
   # s.screenshots     = 'www.example.com/screenshots_1', 'www.example.com/screenshots_2'
-  s.license          = { :type => 'MIT', :file => 'LICENSE' }
+  s.license          = { :type => 'Apache-2.0', :file => 'LICENSE' }
   s.author           = { 'jingpeng' => 'jingpeng.wang@outlook.com' }
   s.source           = { :git => 'https://github.com/doric-pub/doriclib-media.git', :tag => s.version.to_s }
   # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
@@ -36,7 +36,7 @@ TODO: Add long description of the pod here.
   #   'DoricMedia' => ['DoricMedia/Assets/*.png']
   # }
 
-  s.public_header_files = 'iOS/DoricMedia/Classes/DoricMediaLibrary.h'
+  s.public_header_files = 'iOS/DoricMedia/Classes/**/*.h'
   # s.frameworks = 'UIKit', 'MapKit'
   s.vendored_frameworks = "iOS/MediaPlayerFramework.framework"
   s.dependency 'DoricCore'
