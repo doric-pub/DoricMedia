@@ -1,2 +1,2 @@
-# doriclib-media
-doric official media library
+# DoricMedia
+Doric Official Media Library
