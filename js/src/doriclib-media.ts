@@ -495,7 +495,7 @@ class Media extends Panel {
             })
         ])
             .apply({
-                layoutConfig: layoutConfig().fit().configAlignmnet(Gravity.Center),
+                layoutConfig: layoutConfig().fit().configAlignment(Gravity.Center),
                 width: 400,
                 gravity: Gravity.Center,
             } as IVLayout)
