@@ -156,12 +156,21 @@ enum FILTER_TYPE {
     FILTER_AMARO = 2,
     FILTER_ANTIQUE = 3,
     FILTER_BLACKCAT = 4,
-    FILTER_BEAUTY = 5,
+    FILTER_BEAUTY = 5,       // 0.0f - 1.0f
     FILTER_BRANNAN = 6,
     FILTER_N1977 = 7,
     FILTER_BROOKLYN = 8,
     FILTER_COOL = 9,
     FILTER_CRAYON = 10,
+    
+    FILTER_BRIGHTNESS = 11,  // -1.0f - 1.0f
+    FILTER_CONTRAST = 12,    // 0.0f - 4.0f
+    FILTER_EXPOSURE = 13,    // -10.0f - 10.0f
+    FILTER_HUE = 14,         // 0.0f - 360.0f
+    FILTER_SATURATION = 15,  // 0.0f - 2.0f
+    FILTER_SHARPEN = 16,     // -4.0f - 4.0f
+    
+    FILTER_NUM = 17,
 };
 
 enum VideoScalingMode

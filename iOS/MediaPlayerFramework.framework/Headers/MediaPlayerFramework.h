@@ -25,4 +25,4 @@ FOUNDATION_EXPORT const unsigned char MediaPlayerFrameworkVersionString[];
 #import <MediaPlayerFramework/MediaPlayer.h>
 #import <MediaPlayerFramework/VideoView.h>
 #import <MediaPlayerFramework/YPPVideoView.h>
-
+#import <MediaPlayerFramework/FishBubbleAudioPlayer.h>
