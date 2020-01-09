@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ivy-module version="2.0" xmlns:m="http://ant.apache.org/ivy/maven">
-  <info organisation="android-aar" module="slkmediaplayer" revision="unspecified" status="integration" publication="20191226124728"/>
+  <info organisation="android-aar" module="slkmediaplayer" revision="unspecified" status="integration" publication="20200109200700"/>
   <configurations>
     <conf name="archives" visibility="public"/>
     <conf name="default" visibility="public"/>

@@ -13,7 +13,7 @@ uploadArchives {
         mavenDeployer {
             pom.groupId = properties.groupId
             pom.artifactId = properties.artifactId
-            pom.version = '0.1.0'
+            pom.version = '0.2.0'
 
             pom.project {
                 description 'git rev-parse HEAD'.execute([], projectDir).text.trim()
