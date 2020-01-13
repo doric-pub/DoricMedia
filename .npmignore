@@ -1,0 +1,6 @@
+android/
+android-aar/
+iOS/
+.vscode/
+node_modules/
+bundle/

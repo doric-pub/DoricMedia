@@ -1,7 +1,7 @@
 {
     "name": "doric-media",
-    "version": "0.1.1",
-    "main": "index.js",
+    "version": "0.1.2",
+    "main": "build/index.js",
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1",
         "build": "tsc -p .&& rollup -c",
