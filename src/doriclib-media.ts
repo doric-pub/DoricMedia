@@ -4,7 +4,6 @@ import {
     Gravity,
     Group,
     Input,
-    IVLayout,
     Panel,
     layoutConfig,
     navbar,
@@ -498,7 +497,7 @@ class Media extends Panel {
                 layoutConfig: layoutConfig().fit().configAlignment(Gravity.Center),
                 width: 400,
                 gravity: Gravity.Center,
-            } as IVLayout)
+            })
             .in(rootView)
     }
 

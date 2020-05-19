@@ -2,7 +2,7 @@ apply plugin: 'com.android.library'
 
 android {
     compileSdkVersion 29
-    buildToolsVersion "29.0.2"
+    buildToolsVersion "29.0.3"
 
 
     defaultConfig {
@@ -25,8 +25,8 @@ android {
 }
 
 dependencies {
-    implementation "pub.doric:core:0.2.3"
-    implementation "pub.doric.extension:mediaplayer:0.1.0"
+    implementation "pub.doric:core:0.4.24"
+    implementation "pub.doric.extension:mediaplayer:0.2.0"
 }
 
 apply from: rootProject.file('scripts/upload.gradle')

@@ -2,7 +2,7 @@ apply plugin: 'com.android.application'
 
 android {
     compileSdkVersion 29
-    buildToolsVersion "29.0.2"
+    buildToolsVersion "29.0.3"
     defaultConfig {
         applicationId "pub.doric.example"
         minSdkVersion 19
@@ -20,7 +20,7 @@ android {
 
     sourceSets {
         main {
-            assets.srcDirs = [project.getRootDir().getParent() + "/js/bundle/src"]
+            assets.srcDirs = [project.getRootDir().getParent() + "/bundle/src"]
         }
     }
 
@@ -28,7 +28,7 @@ android {
         implementation fileTree(dir: 'libs', include: ['*.jar'])
 
         implementation 'androidx.appcompat:appcompat:1.1.0'
-        implementation 'pub.doric:core:0.2.3'
+        implementation 'pub.doric:core:0.4.24'
         implementation "pub.doric.extension:media:${rootProject.ext.Version}"
     }
 }
@@ -38,6 +38,6 @@ afterEvaluate {
 }
 
 task buildJSBundle(type: Exec) {
-    workingDir project.rootDir.getParent() + "/js"
+    workingDir project.rootDir.getParent()
     commandLine 'doric', 'build'
 }

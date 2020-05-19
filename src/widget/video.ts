@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { IView, Property, View, layoutConfig } from "doric"
+import { Property, View, layoutConfig } from "doric"
 
 export class MediaPlayerOptions {
     mediaPlayerMode: number = 2
@@ -37,7 +37,7 @@ export class MediaPlayerOptions {
     externalRenderMode: number = 0
 }
 
-export interface IVideo extends IView {
+export interface IVideo {
     mediaPlayerOptions?: MediaPlayerOptions
 
     onPrepared?: Function

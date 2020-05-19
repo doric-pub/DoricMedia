@@ -12,5 +12,5 @@ export default {
         resolve({ jsnext: true, main: true }),
         commonjs()
     ],
-    external: ['reflect-metadata', 'doric'],
+    external: ['doric'],
 }
