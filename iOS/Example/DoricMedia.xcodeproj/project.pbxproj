@@ -18,7 +18,7 @@
 		62B1C233C2D8908D44E8504B /* Pods_DoricMedia_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F613391805E47D0777D21265 /* Pods_DoricMedia_Example.framework */; };
 		71719F9F1E33DC2100824A3D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 71719F9D1E33DC2100824A3D /* LaunchScreen.storyboard */; };
 		873B8AEB1B1F5CCA007FD442 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 873B8AEA1B1F5CCA007FD442 /* Main.storyboard */; };
-		8B5EC2B023B1EA9400FF0AED /* src in Resources */ = {isa = PBXBuildFile; fileRef = 8B5EC2AF23B1EA9400FF0AED /* src */; };
+		8BA352662473AF0A000BC2A8 /* src in Resources */ = {isa = PBXBuildFile; fileRef = 8BA352652473AF0A000BC2A8 /* src */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,7 +42,7 @@
 		74D9C312BA9C90032E001304 /* Pods-DoricMedia_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DoricMedia_Tests.debug.xcconfig"; path = "Target Support Files/Pods-DoricMedia_Tests/Pods-DoricMedia_Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		7C779EFC9BAF15F546653B23 /* Pods-DoricMedia_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DoricMedia_Example.release.xcconfig"; path = "Target Support Files/Pods-DoricMedia_Example/Pods-DoricMedia_Example.release.xcconfig"; sourceTree = "<group>"; };
 		873B8AEA1B1F5CCA007FD442 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Main.storyboard; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		8B5EC2AF23B1EA9400FF0AED /* src */ = {isa = PBXFileReference; lastKnownFileType = folder; name = src; path = ../../../js/bundle/src; sourceTree = "<group>"; };
+		8BA352652473AF0A000BC2A8 /* src */ = {isa = PBXFileReference; lastKnownFileType = folder; name = src; path = ../../../bundle/src; sourceTree = "<group>"; };
 		8BE8817A23B200480093DC05 /* DORICAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DORICAppDelegate.h; sourceTree = "<group>"; };
 		B04A13E827B1D638546C893E /* DoricMedia.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = DoricMedia.podspec; path = ../DoricMedia.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		B1EA3DB95F377C8B4C753CFB /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
@@ -111,7 +111,7 @@
 		6003F593195388D20070C39A /* Example for DoricMedia */ = {
 			isa = PBXGroup;
 			children = (
-				8B5EC2AF23B1EA9400FF0AED /* src */,
+				8BA352652473AF0A000BC2A8 /* src */,
 				8BE8817A23B200480093DC05 /* DORICAppDelegate.h */,
 				6003F59D195388D20070C39A /* DORICAppDelegate.m */,
 				873B8AEA1B1F5CCA007FD442 /* Main.storyboard */,
@@ -206,7 +206,7 @@
 				71719F9F1E33DC2100824A3D /* LaunchScreen.storyboard in Resources */,
 				6003F5A9195388D20070C39A /* Images.xcassets in Resources */,
 				6003F598195388D20070C39A /* InfoPlist.strings in Resources */,
-				8B5EC2B023B1EA9400FF0AED /* src in Resources */,
+				8BA352662473AF0A000BC2A8 /* src in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -227,6 +227,8 @@
 				"${BUILT_PRODUCTS_DIR}/YYCache/YYCache.framework",
 				"${BUILT_PRODUCTS_DIR}/YYImage/YYImage.framework",
 				"${BUILT_PRODUCTS_DIR}/YYWebImage/YYWebImage.framework",
+				"${BUILT_PRODUCTS_DIR}/Yoga/yoga.framework",
+				"${BUILT_PRODUCTS_DIR}/YogaKit/YogaKit.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
@@ -237,6 +239,8 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/YYCache.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/YYImage.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/YYWebImage.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/yoga.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/YogaKit.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;

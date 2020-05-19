@@ -494,7 +494,7 @@ class Media extends Panel {
             })
         ])
             .apply({
-                layoutConfig: layoutConfig().fit().configAlignment(Gravity.Center),
+                layoutConfig: layoutConfig().most().configAlignment(Gravity.Center),
                 width: 400,
                 gravity: Gravity.Center,
             })
